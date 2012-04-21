@@ -68,7 +68,7 @@
     <target name="package" depends="version, compile" description="make a jar file for this project">
         <jar destfile="${package.file}">
             <fileset dir="${classes.main.dir}" />
-            <fileset dir="${src.main.resources.dir}" />
+            <!-- <fileset dir="${src.main.resources.dir}" /> -->
             <manifest>
                 <attribute name="Built-By" value="${user.name}" />
                 <attribute name="Build-Version" value="${version}" />
