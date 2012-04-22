@@ -134,7 +134,7 @@
     <!-- ================================= 
           target: publish              
          ================================= -->
-    <target name="publish" depends="clean, package" description="publish this project in the ivy repository">
+    <target name="publish" depends="clean, package, test" description="publish this project in the ivy repository">
         <ivy:publish
             artifactspattern="${build.dir}/[artifact].[ext]"
             resolver="shared"
