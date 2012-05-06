@@ -25,11 +25,11 @@ public class SequenceBioDataFormatSearcher {
         this(new GenBankFormat(), new FastaFormat());
     }
     
-    public SequenceBioDataFormat<?> findFormat(File file) throws IOException {
+    public SequenceBioDataFormat<? extends SequenceBioData> findFormat(File file) throws IOException {
         return findFormat(file.toURI().toURL());
     }
     
-    public SequenceBioDataFormat<?> findFormat(URL url) throws IOException {
+    public SequenceBioDataFormat<? extends SequenceBioData> findFormat(URL url) throws IOException {
         InputStreamReader instReader = new InputStreamReader(url.openStream());
         
         String headText;
@@ -48,7 +48,7 @@ public class SequenceBioDataFormatSearcher {
         return findFormat(headText);
     }
 
-    public SequenceBioDataFormat<?> findFormat(String fileText) throws IOException {
+    public SequenceBioDataFormat<? extends SequenceBioData> findFormat(String fileText) throws IOException {
         for (SequenceBioDataFormat<?> format: formats) {
             if (existsStartOfData(fileText, format)) {
                 return format;
