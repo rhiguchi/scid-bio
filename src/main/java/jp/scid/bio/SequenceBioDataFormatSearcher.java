@@ -17,8 +17,12 @@ public class SequenceBioDataFormatSearcher {
         this.formats = new ArrayList<SequenceBioDataFormat<?>>(formatList);
     }
     
+    public SequenceBioDataFormatSearcher(SequenceBioDataFormat<?>... formats) {
+        this(Arrays.asList(formats));
+    }
+    
     public SequenceBioDataFormatSearcher() {
-        this(Arrays.<SequenceBioDataFormat<?>>asList(new GenBankFormat(), new FastaFormat()));
+        this(new GenBankFormat(), new FastaFormat());
     }
     
     public SequenceBioDataFormat<?> findFormat(File file) throws IOException {
