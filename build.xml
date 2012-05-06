@@ -145,7 +145,7 @@
 
     <target name="ivy-new-version" unless="ivy.new.revision">
         <!-- default module version prefix value -->
-        <property name="module.version.prefix" value="${module.version.target}-dev-b" />
+        <property name="module.version.prefix" value="${module.version.target}." />
 
         <!-- asks to ivy an available version number -->
         <ivy:info file="${ivy.file}" />
