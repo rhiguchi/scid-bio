@@ -28,7 +28,7 @@ public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
     
     private final List<GenBankAttribute.Format> attributeFormats;
 
-    private Terminate.Format terminateFormat = new Terminate.Format();
+    private TerminateFormat terminateFormat = new TerminateFormat();
     
     protected GenBankAttribute.Format firstAttributeFormat;
     
@@ -49,10 +49,10 @@ public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
     
     public GenBankFormat() {
         this(
-            new LocusFormat(), new DefinitionFormat(), new Accession.Format(),
-            new Version.Format(), new Keywords.Format(), new Source.Format(),
-            new Reference.Format(), new Comment.Format(),
-            new Features.Format(), new Origin.Format());
+            new LocusFormat(), new DefinitionFormat(), new AccessionFormat(),
+            new VersionFormat(), new KeywordsFormat(), new SourceFormat(),
+            new ReferenceFormat(), new CommentFormat(),
+            new FeaturesFormat(), new OriginFormat());
     }
 
     public boolean isStartOfData(String line) {

@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import jp.scid.bio.sequence.genbank.Reference;
+import jp.scid.bio.sequence.genbank.ReferenceFormat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,11 +22,11 @@ public class ReferenceFormatTest {
             "  JOURNAL   J. Bacteriol. 178 (11), 3232-3237 (1996)",
             "   PUBMED   8655503");
     
-    Reference.Format format;
+    ReferenceFormat format;
     
     @Before
     public void setUp() throws Exception {
-        format = new Reference.Format();
+        format = new ReferenceFormat();
     }
 
     @Test
@@ -33,17 +34,17 @@ public class ReferenceFormatTest {
         Reference reference = format.parse(referenceLines1);
         
         assertNotNull(reference);
-        assertEquals(1, reference.getBasesStart());
-        assertEquals(3444, reference.getBasesEnd());
+        assertEquals(1, reference.basesStart());
+        assertEquals(3444, reference.basesEnd());
         assertEquals("Erauso,G., Marsin,S., Benbouzid-Rollet,N., Baucher,M.F.,\n"
                 + "Barbeyron,T., Zivanovic,Y., Prieur,D. and Forterre,P.\n",
-                reference.getAuthors());
+                reference.authors());
         assertEquals("Sequence of plasmid pGT5 from the archaeon Pyrococcus abyssi:\n"
                 + "evidence for rolling-circle replication in a hyperthermophile\n",
-                reference.getTitle());
+                reference.title());
         assertEquals("J. Bacteriol. 178 (11), 3232-3237 (1996)\n",
-                reference.getJournal());
+                reference.journal());
         assertEquals("8655503\n",
-                reference.getPubmed());
+                reference.pubmed());
     }
 }

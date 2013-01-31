@@ -1,15 +1,13 @@
 package jp.scid.bio.sequence.genbank;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import jp.scid.bio.GenBankAttribute;
+import jp.scid.bio.GenBank.Builder;
 
-
-public class Keywords implements GenBankAttribute {
+public class Keywords extends AbstractGenBankAttribute {
     private final static Keywords SINGLETON = new Keywords(Collections.singletonList("."));
     
     private final List<String> valueList;
@@ -40,17 +38,8 @@ public class Keywords implements GenBankAttribute {
         return valueList;
     }
     
-    public static class Format extends AbstractAttributeFormat {
-        public Format() {
-            super("KEYWORDS");
-        }
-        
-        @Override
-        public Keywords parse(Iterable<String> lines) throws ParseException {
-            String valueString = getValueString(lines, " ");
-            String[] values = valueString.split("\\s+");
-            
-            return Keywords.from(values);
-        }
+    @Override
+    void setMeToBuilder(Builder builder) {
+        builder.keywords(this);
     }
 }

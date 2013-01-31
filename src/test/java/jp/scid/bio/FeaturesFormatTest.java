@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import jp.scid.bio.sequence.genbank.Features;
+import jp.scid.bio.sequence.genbank.FeaturesFormat;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
@@ -15,11 +16,11 @@ import org.junit.Test;
 public class FeaturesFormatTest {
     private final static String RESOURCE_FEATURE_SOURCE = "features1.gbk";
 
-    Features.Format format;
+    FeaturesFormat format;
     
     @Before
     public void setup() throws Exception {
-        format = new Features.Format();
+        format = new FeaturesFormat();
     }
     
     @Test

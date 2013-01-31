@@ -22,15 +22,15 @@ public class GeneBankFileReader {
     
     private final LocusFormat locusFormat = new LocusFormat();
     private final DefinitionFormat definitionFormat = new DefinitionFormat();
-    private final Accession.Format accessionFormat = new Accession.Format();
-    private final Version.Format versionFormat = new Version.Format();
-    private final Keywords.Format keywordsFormat = new Keywords.Format();
-    private final Source.Format sourceFormat = new Source.Format();
-    private final Reference.Format referenceFormat = new Reference.Format();
-    private final Comment.Format commentFormat = new Comment.Format();
-    private final Features.Format featuresFormat = new Features.Format();
-    private final Origin.Format originFormat = new Origin.Format();
-    private final Terminate.Format terminateFormat = new Terminate.Format();
+    private final AccessionFormat accessionFormat = new AccessionFormat();
+    private final VersionFormat versionFormat = new VersionFormat();
+    private final KeywordsFormat keywordsFormat = new KeywordsFormat();
+    private final SourceFormat sourceFormat = new SourceFormat();
+    private final ReferenceFormat referenceFormat = new ReferenceFormat();
+    private final CommentFormat commentFormat = new CommentFormat();
+    private final FeaturesFormat featuresFormat = new FeaturesFormat();
+    private final OriginFormat originFormat = new OriginFormat();
+    private final TerminateFormat terminateFormat = new TerminateFormat();
     
     private final List<GenBankAttribute.Format> attributeFormats;
     
@@ -80,7 +80,7 @@ public class GeneBankFileReader {
 
                 attrBuilder = new AttributeBuilder(nextParser);
                 
-                if (nextParser instanceof Terminate.Format) {
+                if (nextParser instanceof TerminateFormat) {
                     attrBuilder.append(line);
                     break;
                 }

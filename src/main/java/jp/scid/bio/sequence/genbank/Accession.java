@@ -1,15 +1,12 @@
 package jp.scid.bio.sequence.genbank;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import jp.scid.bio.GenBankAttribute;
-
-public class Accession implements GenBankAttribute {
+public class Accession extends AbstractGenBankAttribute {
     public final static Accession EMPTY = new Accession("", Collections.<String>emptyList());
 
     private final String primary;
@@ -32,6 +29,11 @@ public class Accession implements GenBankAttribute {
 
     public List<String> secondary() {
         return secondary;
+    }
+    
+    @Override
+    void setMeToBuilder(jp.scid.bio.GenBank.Builder builder) {
+        builder.accession(this);
     }
 
     public static class Builder {
@@ -61,26 +63,6 @@ public class Accession implements GenBankAttribute {
             }
 
             Accession accesstion = new Accession(primary, secondary);
-            return accesstion;
-        }
-    }
-
-    public static class Format extends AbstractAttributeFormat {
-        private final static String DEFAULT_IDENTIFIER = "ACCESSION";
-
-        public Format() {
-            super(DEFAULT_IDENTIFIER);
-        }
-
-        @Override
-        public Accession parse(Iterable<String> lines) throws ParseException {
-            String valueString = getValueString(lines, " ");
-            String[] values = valueString.split("\\s+");
-
-            Builder builder = new Builder();
-            builder.addAll(values);
-
-            Accession accesstion = builder.build();
             return accesstion;
         }
     }

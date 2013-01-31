@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import jp.scid.bio.sequence.genbank.Source;
+import jp.scid.bio.sequence.genbank.SourceFormat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,11 +23,11 @@ public class SourceFormatTest {
             "  ORGANISM  Listeria ivanovii",
             "            Bacteria; Firmicutes; Bacillales; Listeriaceae; Listeria.");
     
-    Source.Format format;
+    SourceFormat format;
     
     @Before
     public void setup() throws Exception {
-        format = new Source.Format();
+        format = new SourceFormat();
     }
     
     @Test

@@ -1,10 +1,9 @@
 package jp.scid.bio.sequence.genbank;
 
-import java.text.ParseException;
 
-import jp.scid.bio.GenBankAttribute;
+import jp.scid.bio.GenBank.Builder;
 
-public class Comment implements GenBankAttribute {
+public class Comment extends AbstractGenBankAttribute {
     private final String value;
 
     Comment(String value) {
@@ -24,19 +23,9 @@ public class Comment implements GenBankAttribute {
     public String getValue() {
         return value;
     }
-
-    public static class Format extends AbstractAttributeFormat {
-        private final static String DEFAULT_IDENTIFIER = "COMMENT";
-
-        public Format() {
-            super(DEFAULT_IDENTIFIER);
-        }
-
-        @Override
-        public Comment parse(Iterable<String> lines) throws ParseException {
-            String value = getValueString(lines, "\n");
-
-            return Comment.newComment(value);
-        }
+    
+    @Override
+    void setMeToBuilder(Builder builder) {
+        builder.comment(this);
     }
 }

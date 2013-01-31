@@ -1,6 +1,5 @@
 package jp.scid.bio.sequence.genbank;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -11,10 +10,8 @@ import java.util.ListIterator;
 import java.util.RandomAccess;
 
 import jp.scid.bio.Feature;
-import jp.scid.bio.FeatureFormat;
-import jp.scid.bio.GenBankAttribute;
 
-public class Features implements GenBankAttribute, List<Feature>, RandomAccess {
+public class Features extends AbstractGenBankAttribute implements List<Feature>, RandomAccess {
     private final List<Feature> features;
 
     public Features(Builder builder) {
@@ -125,61 +122,11 @@ public class Features implements GenBankAttribute, List<Feature>, RandomAccess {
         return features.subList(fromIndex, toIndex);
     }
 
-    public static class Format extends AbstractAttributeFormat {
-        protected FeatureFormat featureFormat;
-
-        public Format(FeatureFormat featureFormat) {
-            super("FEATURES");
-            this.featureFormat = featureFormat;
-        }
-        
-        public Format() {
-            this(new FeatureFormat());
-        }
-
-        public int getKeyIndent() {
-            return featureFormat.getKeyIndent();
-        }
-
-        public int getKeyDigits() {
-            return featureFormat.getKeyDigits();
-        }
-        
-        public Features parse(Iterable<String> source) throws ParseException {
-            Iterator<String> sourceIte = source.iterator();
-            ensureHeadLineExistence(sourceIte);
-            
-            Features.Builder builder = new Features.Builder();
-
-            final List<String> featureLines = new ArrayList<String>();
-
-            while (sourceIte.hasNext()) {
-                String line = sourceIte.next();
-                
-                if (!featureLines.isEmpty() && isFeatureHead(line)) {
-                    Feature feature = featureFormat.parse(featureLines);
-                    builder.addFeature(feature);
-
-                    featureLines.clear();
-                }
-
-                featureLines.add(line);
-            }
-            
-            if (!featureLines.isEmpty()) {
-                Feature feature = featureFormat.parse(featureLines);
-                builder.addFeature(feature);
-            }
-
-            return builder.build();
-        }
-
-        public boolean isFeatureHead(String line) {
-            return line.length() >= getKeyDigits() && line.charAt(getKeyIndent()) != ' ';
-        }
-
+    @Override
+    void setMeToBuilder(jp.scid.bio.GenBank.Builder builder) {
+        builder.features(this);
     }
-
+    
     public static class Builder {
         private final List<Feature> features = new LinkedList<Feature>();
 
