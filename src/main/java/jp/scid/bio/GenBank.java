@@ -11,8 +11,6 @@ import jp.scid.bio.sequence.genbank.Reference;
 import jp.scid.bio.sequence.genbank.Source;
 import jp.scid.bio.sequence.genbank.Version;
 
-
-
 public class GenBank implements SequenceBioData {
     public final static GenBank EMPTY = new GenBank(new Builder());
 
@@ -40,49 +38,49 @@ public class GenBank implements SequenceBioData {
         this.origin = builder.origin;
     }
 
-    public Locus getLocus() {
+    public Locus locus() {
         return locus;
     }
     
-    public Definition getDefinition() {
+    public Definition definition() {
         return definition;
     }
 
-    public Accession getAccession() {
+    public Accession accession() {
         return accession;
     }
 
-    public Version getVersion() {
+    public Version version() {
         return version;
     }
 
-    public Keywords getKeywords() {
+    public Keywords keywords() {
         return keywords;
     }
 
-    public Source getSource() {
+    public Source source() {
         return source;
     }
 
-    public Reference getReference() {
+    public Reference reference() {
         return reference;
     }
 
-    public Comment getComment() {
+    public Comment comment() {
         return comment;
     }
 
-    public Features getFeatures() {
+    public Features features() {
         return features;
     }
 
-    public Origin getOrigin() {
+    public Origin origin() {
         return origin;
     }
 
     @Override
     public String getSequence() {
-        return origin.getSequence();
+        return origin.sequence();
     }
 
     public static class Builder {

@@ -32,7 +32,7 @@ public class GenBankFormatTest {
         assertNotNull(genBank);
         assertNotNull(genBank.getLocus());
         assertNotNull(genBank.getDefinition());
-        assertNotNull(genBank.getAccession());
+        assertNotNull(genBank.accession());
         assertNotNull(genBank.getVersion());
         assertNotNull(genBank.getKeywords());
         assertNotNull(genBank.getSource());
@@ -43,6 +43,6 @@ public class GenBankFormatTest {
         assertEquals("features count", 11, genBank.getFeatures().getFeatures().size());
         
         assertNotNull(genBank.getOrigin());
-        assertEquals("origin length", 3444, genBank.getOrigin().getSequence().length());
+        assertEquals("origin length", 3444, genBank.getOrigin().sequence().length());
     }
 }

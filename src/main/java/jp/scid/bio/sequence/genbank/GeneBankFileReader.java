@@ -53,7 +53,7 @@ public class GeneBankFileReader {
         return new ArrayList<GenBank>(results);
     }
 
-    public GenBank readGeneBank(BufferedReader reader) throws IOException {
+    GenBank readGeneBank(BufferedReader reader) throws IOException {
         // read locus
         String line = reader.readLine();
         if (line == null) {
@@ -122,9 +122,7 @@ public class GeneBankFileReader {
         GenBank.Builder builder = new GenBank.Builder();
         
         for (GenBankAttribute attribute: attributes) {
-            if (attribute instanceof AbstractGenBankAttribute) {
-                ((AbstractGenBankAttribute) attribute).setMeToBuilder(builder);
-            }
+            ((AbstractGenBankAttribute) attribute).setMeToBuilder(builder);
         }
         
         return builder.build();

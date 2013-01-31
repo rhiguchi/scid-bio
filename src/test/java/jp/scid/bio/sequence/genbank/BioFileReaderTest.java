@@ -1,4 +1,4 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import static org.junit.Assert.*;
 
@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
-import jp.scid.bio.sequence.genbank.GeneBankFileReader;
+import jp.scid.bio.GenBank;
 
 import org.junit.After;
 import org.junit.Before;
@@ -31,12 +31,17 @@ public class BioFileReaderTest {
     }
 
     @Test
-    public void test() throws IOException {
+    public void parse() throws IOException {
         GeneBankFileReader builder = new GeneBankFileReader();
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(gbResource));
-        List<GenBank> data = builder.readFromBufferedReader(reader);
+        List<GenBank> list = builder.readFromBufferedReader(reader);
         
-        assertEquals(1, data.size());
+        assertEquals(1, list.size());
+        
+        GenBank data = list.get(0);
+        assertEquals(new Locus.Builder()
+                .name("NC_001773").sequenceLength(3444).sequenceUnit("bp").molculeType("DNA")
+                .topology("circular").division("BCT").date(2006, 3, 30).build(), data.locus());
     }
 }
