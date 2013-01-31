@@ -1,6 +1,7 @@
 package jp.scid.bio;
 
 
+
 public class GenBank implements SequenceBioData {
     public final static GenBank EMPTY = new GenBank(new Builder());
 
@@ -165,5 +166,9 @@ public class GenBank implements SequenceBioData {
         public void origin(Origin origin) {
             this.origin = origin;
         }
+    }
+
+    static abstract class AbstractGenBankAttribute implements GenBankAttribute {
+        abstract void setMeToBuilder(GenBank.Builder builder);
     }
 }

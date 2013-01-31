@@ -18,6 +18,11 @@ public class Terminate implements GenBankAttribute {
             return line.startsWith("//");
         }
         
+        @Override
+        public boolean isHeadLine(String line) {
+            return isTerminateLine(line);
+        }
+        
         public Terminate parse(String line) throws ParseException {
             if (!isTerminateLine(line))
                 throw new ParseException("not termination", 0);
