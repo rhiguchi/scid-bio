@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jp.scid.bio.GenBankAttribute;
 import jp.scid.bio.sequence.genbank.Locus.Builder;
 
 /**

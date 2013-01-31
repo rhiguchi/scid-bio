@@ -1,4 +1,5 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
+
 
 public class BoundedRangeLocation extends RangeLocation {
     protected final boolean lesserStart;

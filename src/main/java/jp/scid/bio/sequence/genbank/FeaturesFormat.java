@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import jp.scid.bio.Feature;
-import jp.scid.bio.FeatureFormat;
 
 public class FeaturesFormat extends AbstractAttributeFormat {
     protected FeatureFormat featureFormat;

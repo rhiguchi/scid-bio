@@ -15,7 +15,7 @@ public class Origin extends AbstractGenBankAttribute {
     }
     
     @Override
-    void setMeToBuilder(jp.scid.bio.GenBank.Builder builder) {
+    void setMeToBuilder(jp.scid.bio.sequence.genbank.GenBank.Builder builder) {
         builder.origin(this);
     }
     

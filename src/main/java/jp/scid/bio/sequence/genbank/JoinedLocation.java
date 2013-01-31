@@ -1,9 +1,10 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
 
 public class JoinedLocation extends FeatureLocation {
     private final List<FeatureLocation> locations;

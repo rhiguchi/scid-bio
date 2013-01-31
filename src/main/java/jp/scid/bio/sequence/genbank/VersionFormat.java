@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jp.scid.bio.GenBankAttribute;
 
 public class VersionFormat extends AbstractAttributeFormat {
     private final static String DEFAULT_IDENTIFIER = "VERSION";

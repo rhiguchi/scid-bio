@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+import jp.scid.bio.sequence.genbank.Feature;
 import jp.scid.bio.sequence.genbank.Features;
 import jp.scid.bio.sequence.genbank.FeaturesFormat;
 

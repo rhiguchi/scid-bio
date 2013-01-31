@@ -1,15 +1,6 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
-import jp.scid.bio.sequence.genbank.Accession;
-import jp.scid.bio.sequence.genbank.Comment;
-import jp.scid.bio.sequence.genbank.Definition;
-import jp.scid.bio.sequence.genbank.Features;
-import jp.scid.bio.sequence.genbank.Keywords;
-import jp.scid.bio.sequence.genbank.Locus;
-import jp.scid.bio.sequence.genbank.Origin;
-import jp.scid.bio.sequence.genbank.Reference;
-import jp.scid.bio.sequence.genbank.Source;
-import jp.scid.bio.sequence.genbank.Version;
+import jp.scid.bio.SequenceBioData;
 
 public class GenBank implements SequenceBioData {
     public final static GenBank EMPTY = new GenBank(new Builder());

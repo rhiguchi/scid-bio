@@ -1,7 +1,7 @@
 package jp.scid.bio.sequence.genbank;
 
 
-import jp.scid.bio.GenBank.Builder;
+import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
 public class Definition extends AbstractGenBankAttribute {
     public final static Definition EMPTY = new Definition();

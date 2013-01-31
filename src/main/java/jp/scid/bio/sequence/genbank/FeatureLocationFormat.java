@@ -1,8 +1,10 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import jp.scid.bio.sequence.genbank.BoundedRangeLocation.Builder;
 
 public class FeatureLocationFormat {
     private static final String COMPLEMENT_VALUE_PREFIX = "complement(";

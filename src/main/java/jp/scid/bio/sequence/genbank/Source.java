@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import jp.scid.bio.GenBank.Builder;
+import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
 public class Source extends AbstractGenBankAttribute {
     private final String value;

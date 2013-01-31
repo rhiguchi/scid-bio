@@ -3,7 +3,6 @@ package jp.scid.bio.sequence.genbank;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import jp.scid.bio.GenBank;
 
 public class Locus extends AbstractGenBankAttribute {
     public final static Locus EMPTY = new Locus();

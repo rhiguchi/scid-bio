@@ -2,6 +2,8 @@ package jp.scid.bio;
 
 import java.text.ParseException;
 
+import jp.scid.bio.sequence.genbank.GenBankAttribute;
+
 public class UnknownAttribute implements GenBankAttribute {
     public static UnknownAttribute INSTANCE = new UnknownAttribute();
     

@@ -1,4 +1,4 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import jp.scid.bio.sequence.genbank.FeatureQualifier.Format;
 
 
 public class FeatureFormat {

@@ -11,9 +11,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import jp.scid.bio.GenBank;
-import jp.scid.bio.GenBank.Builder;
-import jp.scid.bio.GenBankAttribute;
+import jp.scid.bio.sequence.genbank.GenBank.Builder;
 import jp.scid.bio.SequenceBioDataFormat;
 import jp.scid.bio.UnknownAttribute;
 

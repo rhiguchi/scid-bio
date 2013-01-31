@@ -11,9 +11,7 @@ import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import jp.scid.bio.GenBank;
-import jp.scid.bio.GenBankAttribute;
-import jp.scid.bio.GenBankAttribute.Format;
+import jp.scid.bio.sequence.genbank.GenBankAttribute.Format;
 import jp.scid.bio.UnknownAttribute;
 
 public class GeneBankFileReader {

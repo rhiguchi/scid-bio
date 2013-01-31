@@ -32,7 +32,7 @@ public class Accession extends AbstractGenBankAttribute {
     }
     
     @Override
-    void setMeToBuilder(jp.scid.bio.GenBank.Builder builder) {
+    void setMeToBuilder(jp.scid.bio.sequence.genbank.GenBank.Builder builder) {
         builder.accession(this);
     }
 

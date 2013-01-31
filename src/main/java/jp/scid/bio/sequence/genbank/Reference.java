@@ -57,7 +57,7 @@ public class Reference extends AbstractGenBankAttribute {
     }
     
     @Override
-    void setMeToBuilder(jp.scid.bio.GenBank.Builder builder) {
+    void setMeToBuilder(jp.scid.bio.sequence.genbank.GenBank.Builder builder) {
         builder.reference(this);
     }
 

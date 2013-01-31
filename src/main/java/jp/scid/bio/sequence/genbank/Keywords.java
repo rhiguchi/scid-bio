@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import jp.scid.bio.GenBank.Builder;
+import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
 public class Keywords extends AbstractGenBankAttribute {
     private final static Keywords SINGLETON = new Keywords(Collections.singletonList("."));

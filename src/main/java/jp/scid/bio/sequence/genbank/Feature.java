@@ -1,8 +1,9 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 
 public class Feature {

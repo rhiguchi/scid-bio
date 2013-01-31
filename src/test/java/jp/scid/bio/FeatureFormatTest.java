@@ -10,6 +10,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import jp.scid.bio.sequence.genbank.Feature;
+import jp.scid.bio.sequence.genbank.FeatureFormat;
+import jp.scid.bio.sequence.genbank.FeatureLocation;
+
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.Test;

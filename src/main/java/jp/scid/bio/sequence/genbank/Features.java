@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.RandomAccess;
 
-import jp.scid.bio.Feature;
 
 public class Features extends AbstractGenBankAttribute implements List<Feature>, RandomAccess {
     private final List<Feature> features;
@@ -123,7 +122,7 @@ public class Features extends AbstractGenBankAttribute implements List<Feature>,
     }
 
     @Override
-    void setMeToBuilder(jp.scid.bio.GenBank.Builder builder) {
+    void setMeToBuilder(jp.scid.bio.sequence.genbank.GenBank.Builder builder) {
         builder.features(this);
     }
     

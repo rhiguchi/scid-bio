@@ -4,9 +4,13 @@ import static org.junit.Assert.*;
 
 import java.text.ParseException;
 
-import jp.scid.bio.RangeLocation.ExactPointLocation;
-import jp.scid.bio.RangeLocation.PointLocation;
-import jp.scid.bio.RangeLocation.SiteLocation;
+import jp.scid.bio.sequence.genbank.BoundedRangeLocation;
+import jp.scid.bio.sequence.genbank.FeatureLocation;
+import jp.scid.bio.sequence.genbank.FeatureLocationFormat;
+import jp.scid.bio.sequence.genbank.JoinedLocation;
+import jp.scid.bio.sequence.genbank.RangeLocation.ExactPointLocation;
+import jp.scid.bio.sequence.genbank.RangeLocation.PointLocation;
+import jp.scid.bio.sequence.genbank.RangeLocation.SiteLocation;
 
 import org.junit.Before;
 import org.junit.Test;
