@@ -21,7 +21,7 @@ public class GeneBankFileReader {
     private final static String ELEMENT_CONTINUANCE_PREFIX = "  ";
     
     private final LocusFormat locusFormat = new LocusFormat();
-    private final Definition.Format definitionFormat = new Definition.Format();
+    private final DefinitionFormat definitionFormat = new DefinitionFormat();
     private final Accession.Format accessionFormat = new Accession.Format();
     private final Version.Format versionFormat = new Version.Format();
     private final Keywords.Format keywordsFormat = new Keywords.Format();

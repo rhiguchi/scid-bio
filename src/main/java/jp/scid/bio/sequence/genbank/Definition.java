@@ -1,21 +1,20 @@
 package jp.scid.bio.sequence.genbank;
 
-import java.text.ParseException;
 
-import jp.scid.bio.GenBankAttribute;
+import jp.scid.bio.GenBank.Builder;
 
-public class Definition implements GenBankAttribute {
+public class Definition extends AbstractGenBankAttribute {
     public final static Definition EMPTY = new Definition();
 
     private final String value;
 
-    Definition(String value) {
+    private Definition(String value) {
         if (value == null) throw new IllegalArgumentException("value must not be null");
 
         this.value = value;
     }
 
-    Definition() {
+    private Definition() {
         this("");
     }
 
@@ -23,14 +22,19 @@ public class Definition implements GenBankAttribute {
         return new Definition(value);
     }
 
-    public String getValue() {
+    public String value() {
         return value;
+    }
+    
+    @Override
+    void setMeToBuilder(Builder builder) {
+        builder.definition(this);
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Definition [value=").append(value).append("]");
+        builder.append("Definition  ").append(value);
         return builder.toString();
     }
 
@@ -53,20 +57,5 @@ public class Definition implements GenBankAttribute {
         }
         else if (!value.equals(other.value)) return false;
         return true;
-    }
-
-    public static class Format extends AbstractAttributeFormat {
-        private final static String DEFAULT_IDENTIFIER = "DEFINITION";
-
-        public Format() {
-            super(DEFAULT_IDENTIFIER);
-        }
-
-        @Override
-        public Definition parse(Iterable<String> lines) throws ParseException {
-            String value = getValueString(lines, "\n");
-
-            return Definition.newDefinition(value);
-        }
     }
 }

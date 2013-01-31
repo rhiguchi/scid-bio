@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import jp.scid.bio.sequence.genbank.GeneBankFileReader;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
