@@ -1,26 +1,19 @@
 package jp.scid.bio.sequence.genbank;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import jp.scid.bio.GenBankAttribute;
+import jp.scid.bio.GenBank;
 
-
-public class Locus implements GenBankAttribute {
+public class Locus extends AbstractGenBankAttribute {
     public final static Locus EMPTY = new Locus();
 
-    final String name;
-    final int sequenceLength;
-    final String sequenceUnit;
-    final String molculeType;
-    final String topology;
-    final String division;
-    final Date date;
+    private final String name;
+    private final int sequenceLength;
+    private final String sequenceUnit;
+    private final String molculeType;
+    private final String topology;
+    private final String division;
+    private final Date date;
 
     Locus(Locus.Builder builder) {
         this.name = builder.name;
@@ -36,34 +29,39 @@ public class Locus implements GenBankAttribute {
         this(new Locus.Builder());
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
-    public int getSequenceLength() {
+    public int sequenceLength() {
         return sequenceLength;
     }
 
-    public String getSequenceUnit() {
+    public String sequenceUnit() {
         return sequenceUnit;
     }
 
-    public String getMolculeType() {
+    public String molculeType() {
         return molculeType;
     }
 
-    public String getTopology() {
+    public String topology() {
         return topology;
     }
 
-    public String getDivision() {
+    public String division() {
         return division;
     }
 
-    public Date getDate() {
+    public Date date() {
         return date;
     }
 
+    @Override
+    void setMeToBuilder(GenBank.Builder builder) {
+        builder.locus(this);
+    }
+    
     @Override
     public String toString() {
         StringBuilder builder2 = new StringBuilder();
@@ -134,136 +132,51 @@ public class Locus implements GenBankAttribute {
         Date date = null;
 
         public Locus build() {
-            if (name == null) throw new IllegalArgumentException("name must not be null");
-
-            if (sequenceUnit == null)
-                throw new IllegalArgumentException("sequenceUnit must not be null");
-
-            if (molculeType == null)
-                throw new IllegalArgumentException("molculeType must not be null");
-
-            if (topology == null) throw new IllegalArgumentException("topology must not be null");
-
-            if (division == null) throw new IllegalArgumentException("division must not be null");
-
             return new Locus(this);
         }
 
         public void name(String name) {
+            if (name == null)
+                throw new IllegalArgumentException("name must not be null");
+            
             this.name = name;
         }
 
         public void sequenceLength(int sequenceLength) {
+            if (sequenceLength < 0)
+                throw new IllegalArgumentException("sequenceLength must not be negative");
+            
             this.sequenceLength = sequenceLength;
         }
 
         public void sequenceUnit(String sequenceUnit) {
+            if (sequenceUnit == null)
+                throw new IllegalArgumentException("sequenceUnit must not be null");
+            
             this.sequenceUnit = sequenceUnit;
         }
 
         public void molculeType(String molculeType) {
+            if (molculeType == null)
+                throw new IllegalArgumentException("molculeType must not be null");
+            
             this.molculeType = molculeType;
         }
 
         public void topology(String topology) {
+            if (topology == null) throw new IllegalArgumentException("topology must not be null");
+            
             this.topology = topology;
         }
 
         public void division(String division) {
+            if (division == null) throw new IllegalArgumentException("division must not be null");
+            
             this.division = division;
         }
 
         public void date(Date date) {
             this.date = date;
-        }
-    }
-
-    public static class Format extends AbstractAttributeFormat {
-        private final static Logger logger = Logger.getLogger(Format.class.getName());
-
-        public static final String DEFAULT_LOCUS_FORMAT_PATTERN = "(?x)" + "(\\S+)\\s+" + // Locus
-                                                                                          // Name
-            "(?:(\\d+)\\s+(bp|aa)\\s{1,4})?" + // Sequence Length & Unit
-            "(\\S+)?\\s+" + // Molecule Type
-            "(circular|linear)?\\s*" + // Topology
-            "(\\S+)?\\s*" + // Division
-            "(\\S+)?"; // Date
-
-        public Format() {
-            super("LOCUS");
-        }
-
-        protected String getLocusFormatPattern() {
-            return DEFAULT_LOCUS_FORMAT_PATTERN;
-        }
-
-        public Locus parse(String line) throws ParseException {
-            String pattern = getLocusFormatPattern();
-            String locusData = getValueString(line);
-
-            Matcher m = Pattern.compile(pattern).matcher(locusData);
-
-            if (!m.matches()) throw new ParseException("need a name: " + line, identifierDigits);
-
-            Builder builder = new Builder();
-
-            // name
-            String name = m.group(1);
-            builder.name(name);
-
-            // sequenceLength
-            int sequenceLength = 0;
-            String seqLengthText = m.group(2);
-            if (seqLengthText != null) {
-                try {
-                    sequenceLength = parseSequenceLength(seqLengthText);
-                }
-                catch (ParseException e) {
-                    logger.log(Level.INFO, "Cannot parse sequence length from '{0}'", line);
-                }
-            }
-            builder.sequenceLength(sequenceLength);
-
-            // seqUnit
-            String seqUnit = m.group(3);
-            builder.sequenceUnit(seqUnit);
-
-            // molType
-            String molType = m.group(4);
-            builder.molculeType(molType);
-
-            // topology
-            String topology = m.group(5);
-            builder.topology(topology);
-
-            // division
-            String division = m.group(6);
-            builder.division(division);
-
-            // date
-            String dateText = m.group(7);
-            if (dateText != null) {
-                try {
-                    Date date = parseDate(dateText);
-                    builder.date(date);
-                }
-                catch (ParseException e) {
-                    logger.log(Level.INFO, "Cannot parse date from '{0}'", line);
-                }
-            }
-
-            Locus locus = builder.build();
-            return locus;
-        }
-
-        @Override
-        public GenBankAttribute parse(Iterable<String> lines) throws ParseException {
-            String firstLine = ensureHeadLineExistence(lines.iterator());
-            return parse(firstLine);
-        }
-
-        Date parseDate(String dateText) throws ParseException {
-            return new SimpleDateFormat("dd-MMM-yyyy", java.util.Locale.US).parse(dateText);
         }
     }
 }

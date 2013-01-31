@@ -20,7 +20,7 @@ public class GeneBankFileReader {
     private final static Logger logger = Logger.getLogger(GeneBankFileReader.class.getName());
     private final static String ELEMENT_CONTINUANCE_PREFIX = "  ";
     
-    private final Locus.Format locusFormat = new Locus.Format();
+    private final LocusFormat locusFormat = new LocusFormat();
     private final Definition.Format definitionFormat = new Definition.Format();
     private final Accession.Format accessionFormat = new Accession.Format();
     private final Version.Format versionFormat = new Version.Format();

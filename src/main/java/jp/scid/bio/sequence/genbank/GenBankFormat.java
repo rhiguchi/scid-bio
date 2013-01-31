@@ -49,7 +49,7 @@ public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
     
     public GenBankFormat() {
         this(
-            new Locus.Format(), new Definition.Format(), new Accession.Format(),
+            new LocusFormat(), new Definition.Format(), new Accession.Format(),
             new Version.Format(), new Keywords.Format(), new Source.Format(),
             new Reference.Format(), new Comment.Format(),
             new Features.Format(), new Origin.Format());
