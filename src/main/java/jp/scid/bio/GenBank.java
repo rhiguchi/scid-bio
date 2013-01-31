@@ -1,5 +1,16 @@
 package jp.scid.bio;
 
+import jp.scid.bio.sequence.genbank.Accession;
+import jp.scid.bio.sequence.genbank.Comment;
+import jp.scid.bio.sequence.genbank.Definition;
+import jp.scid.bio.sequence.genbank.Features;
+import jp.scid.bio.sequence.genbank.Keywords;
+import jp.scid.bio.sequence.genbank.Locus;
+import jp.scid.bio.sequence.genbank.Origin;
+import jp.scid.bio.sequence.genbank.Reference;
+import jp.scid.bio.sequence.genbank.Source;
+import jp.scid.bio.sequence.genbank.Version;
+
 
 
 public class GenBank implements SequenceBioData {
@@ -166,9 +177,5 @@ public class GenBank implements SequenceBioData {
         public void origin(Origin origin) {
             this.origin = origin;
         }
-    }
-
-    static abstract class AbstractGenBankAttribute implements GenBankAttribute {
-        abstract void setMeToBuilder(GenBank.Builder builder);
     }
 }

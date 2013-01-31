@@ -1,4 +1,4 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import jp.scid.bio.GenBankAttribute;
 
 public class Source implements GenBankAttribute {
     private final String value;

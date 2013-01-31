@@ -1,4 +1,4 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,8 +11,10 @@ import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import jp.scid.bio.GenBank.AbstractGenBankAttribute;
+import jp.scid.bio.GenBank;
+import jp.scid.bio.GenBankAttribute;
 import jp.scid.bio.GenBankAttribute.Format;
+import jp.scid.bio.UnknownAttribute;
 
 public class GeneBankFileReader {
     private final static Logger logger = Logger.getLogger(GeneBankFileReader.class.getName());
@@ -132,17 +134,12 @@ public class GeneBankFileReader {
         return !line.startsWith(ELEMENT_CONTINUANCE_PREFIX);
     }
 
-
-    static class AttributeBuilder {
+    private static class AttributeBuilder {
         private final GenBankAttribute.Format parser;
         private final Queue<String> lines = new ArrayDeque<String>();
 
         public AttributeBuilder(GenBankAttribute.Format parser) {
             this.parser = parser;
-        }
-
-        public AttributeBuilder() {
-            this(new UnknownAttribute.Format());
         }
 
         public void append(String line) {
@@ -153,10 +150,6 @@ public class GeneBankFileReader {
             return parser.getClass().getName();
         }
 
-        boolean isBufferEmpty() {
-            return lines.isEmpty();
-        }
-        
         public GenBankAttribute build() throws ParseException {
             return parser.parse(lines);
         }

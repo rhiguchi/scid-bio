@@ -1,4 +1,4 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import jp.scid.bio.GenBankAttribute;
 
 
 public class Locus implements GenBankAttribute {

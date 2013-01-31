@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
+import jp.scid.bio.sequence.genbank.Reference;
+
 import org.junit.Before;
 import org.junit.Test;
 

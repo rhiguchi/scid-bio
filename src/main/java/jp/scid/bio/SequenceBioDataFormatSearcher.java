@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import jp.scid.bio.sequence.genbank.GenBankFormat;
+
 public class SequenceBioDataFormatSearcher {
     private List<SequenceBioDataFormat<?>> formats;
     

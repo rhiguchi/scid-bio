@@ -5,8 +5,9 @@ import static org.junit.Assert.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import jp.scid.bio.Locus.Builder;
-import jp.scid.bio.Locus.Format;
+import jp.scid.bio.sequence.genbank.Locus;
+import jp.scid.bio.sequence.genbank.Locus.Builder;
+import jp.scid.bio.sequence.genbank.Locus.Format;
 
 import org.junit.Before;
 import org.junit.Test;

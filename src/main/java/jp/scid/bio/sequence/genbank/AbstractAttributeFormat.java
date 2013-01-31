@@ -1,9 +1,12 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import static java.lang.String.*;
 
 import java.text.ParseException;
 import java.util.Iterator;
+
+import jp.scid.bio.GenBankAttribute;
+import jp.scid.bio.GenBankAttribute.Format;
 
 abstract class AbstractAttributeFormat implements GenBankAttribute.Format {
     int identifierDigits = 12;

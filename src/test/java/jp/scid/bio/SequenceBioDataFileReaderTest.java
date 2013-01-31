@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.net.URL;
 
+import jp.scid.bio.sequence.genbank.GenBankFormat;
+
 import org.junit.Test;
 
 public class SequenceBioDataFileReaderTest {

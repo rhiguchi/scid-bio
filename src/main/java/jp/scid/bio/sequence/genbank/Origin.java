@@ -1,7 +1,9 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.text.ParseException;
 import java.util.Iterator;
+
+import jp.scid.bio.GenBankAttribute;
 
 public class Origin implements GenBankAttribute {
     private final String sequence;

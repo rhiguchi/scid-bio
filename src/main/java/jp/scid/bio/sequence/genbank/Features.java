@@ -1,4 +1,4 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -9,6 +9,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.RandomAccess;
+
+import jp.scid.bio.Feature;
+import jp.scid.bio.FeatureFormat;
+import jp.scid.bio.GenBankAttribute;
 
 public class Features implements GenBankAttribute, List<Feature>, RandomAccess {
     private final List<Feature> features;

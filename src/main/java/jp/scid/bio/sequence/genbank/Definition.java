@@ -1,6 +1,8 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.text.ParseException;
+
+import jp.scid.bio.GenBankAttribute;
 
 public class Definition implements GenBankAttribute {
     public final static Definition EMPTY = new Definition();

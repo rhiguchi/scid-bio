@@ -5,7 +5,8 @@ import static org.junit.Assert.*;
 import java.text.ParseException;
 import java.util.Collections;
 
-import jp.scid.bio.Definition.Format;
+import jp.scid.bio.sequence.genbank.Definition;
+import jp.scid.bio.sequence.genbank.Definition.Format;
 
 import org.junit.Test;
 
