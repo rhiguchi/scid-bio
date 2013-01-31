@@ -1,6 +1,7 @@
 package jp.scid.bio.sequence.genbank;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import jp.scid.bio.GenBank;
 
@@ -135,48 +136,60 @@ public class Locus extends AbstractGenBankAttribute {
             return new Locus(this);
         }
 
-        public void name(String name) {
+        public Builder name(String name) {
             if (name == null)
                 throw new IllegalArgumentException("name must not be null");
             
             this.name = name;
+            return this;
         }
 
-        public void sequenceLength(int sequenceLength) {
+        public Builder sequenceLength(int sequenceLength) {
             if (sequenceLength < 0)
                 throw new IllegalArgumentException("sequenceLength must not be negative");
             
             this.sequenceLength = sequenceLength;
+            return this;
         }
 
-        public void sequenceUnit(String sequenceUnit) {
+        public Builder sequenceUnit(String sequenceUnit) {
             if (sequenceUnit == null)
                 throw new IllegalArgumentException("sequenceUnit must not be null");
             
             this.sequenceUnit = sequenceUnit;
+            return this;
         }
 
-        public void molculeType(String molculeType) {
+        public Builder molculeType(String molculeType) {
             if (molculeType == null)
                 throw new IllegalArgumentException("molculeType must not be null");
             
             this.molculeType = molculeType;
+            return this;
         }
 
-        public void topology(String topology) {
+        public Builder topology(String topology) {
             if (topology == null) throw new IllegalArgumentException("topology must not be null");
             
             this.topology = topology;
+            return this;
         }
 
-        public void division(String division) {
+        public Builder division(String division) {
             if (division == null) throw new IllegalArgumentException("division must not be null");
             
             this.division = division;
+            return this;
         }
 
-        public void date(Date date) {
+        public Builder date(Date date) {
             this.date = date;
+            return this;
+        }
+        
+        public Builder date(int year, int mon, int day) {
+            this.date = new GregorianCalendar(year, mon - 1, day).getTime();
+            return this;
         }
     }
 }

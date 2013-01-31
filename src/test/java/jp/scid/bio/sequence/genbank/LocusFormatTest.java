@@ -3,7 +3,7 @@ package jp.scid.bio.sequence.genbank;
 import static org.junit.Assert.*;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +29,6 @@ public class LocusFormatTest {
         assertEquals("DNA", locus.molculeType());
         assertEquals("circular", locus.topology());
         assertEquals("BCT", locus.division());
-        assertEquals(new SimpleDateFormat("yyyy-MM-dd").parse("2006-03-30"), locus.date());
+        assertEquals(new GregorianCalendar(2006, 2, 30).getTime(), locus.date());
     }
 }

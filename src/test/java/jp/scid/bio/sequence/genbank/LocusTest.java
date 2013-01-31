@@ -1,6 +1,9 @@
 package jp.scid.bio.sequence.genbank;
 
 import static org.junit.Assert.*;
+
+import java.util.GregorianCalendar;
+
 import jp.scid.bio.sequence.genbank.Locus.Builder;
 
 import org.junit.Before;
@@ -11,7 +14,11 @@ public class LocusTest {
 
     @Before
     public void setUp() throws Exception {
-        builder = new Builder();
+        builder = newBuilder();
+    }
+
+    private Builder newBuilder() {
+        return new Builder();
     }
 
     // name
@@ -80,5 +87,61 @@ public class LocusTest {
         
         builder.topology("other tp");
         assertEquals("other tp", builder.build().topology());
+    }
+    
+    @Test
+    public void equals() {
+        Locus empty = builder.build();
+        
+        assertTrue("empty eq", newBuilder().build().equals(empty)); 
+    }
+    
+    @Test
+    public void equals_name() {
+        Locus locus = builder.name("name").build();
+        assertFalse(newBuilder().build().equals(locus)); 
+        assertTrue(newBuilder().name("name").build().equals(locus)); 
+    }
+    
+    @Test
+    public void equals_sequenceLength() {
+        Locus locus = builder.sequenceLength(1234).build();
+        assertFalse(newBuilder().build().equals(locus)); 
+        assertTrue(newBuilder().sequenceLength(1234).build().equals(locus)); 
+    }
+    
+    @Test
+    public void equals_sequenceUnit() {
+        Locus locus = builder.sequenceUnit("bp").build();
+        assertFalse(newBuilder().build().equals(locus)); 
+        assertTrue(newBuilder().sequenceUnit("bp").build().equals(locus)); 
+    }
+    
+    @Test
+    public void equals_molculeType() {
+        Locus locus = builder.molculeType("DNA").build();
+        assertFalse(newBuilder().build().equals(locus)); 
+        assertTrue(newBuilder().molculeType("DNA").build().equals(locus)); 
+    }
+    
+    @Test
+    public void equals_topology() {
+        Locus locus = builder.topology("BCT").build();
+        assertFalse(newBuilder().build().equals(locus)); 
+        assertTrue(newBuilder().topology("BCT").build().equals(locus)); 
+    }
+    
+    @Test
+    public void equals_division() {
+        Locus locus = builder.division("BCT").build();
+        assertFalse(newBuilder().build().equals(locus)); 
+        assertTrue(newBuilder().division("BCT").build().equals(locus)); 
+    }
+    
+    @Test
+    public void equals_date() {
+        Locus locus = builder.date(new GregorianCalendar(2006, 2, 30).getTime()).build();
+        assertFalse(newBuilder().build().equals(locus)); 
+        assertTrue(newBuilder().date(new GregorianCalendar(2006, 2, 30).getTime()).build().equals(locus)); 
     }
 }
