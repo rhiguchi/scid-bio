@@ -1,4 +1,6 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.fasta;
+
+import jp.scid.bio.SequenceBioData;
 
 public class Fasta implements SequenceBioData {
     private final String identifier;

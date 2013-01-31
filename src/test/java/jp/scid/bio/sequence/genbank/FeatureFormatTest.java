@@ -1,7 +1,7 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import static org.junit.Assert.*;
-import static jp.scid.bio.FeatureLocationFormatTest.assertEqualsStartEnd;
+import static jp.scid.bio.sequence.genbank.FeatureLocationFormatTest.*;
 
 import java.io.IOException;
 import java.text.ParseException;

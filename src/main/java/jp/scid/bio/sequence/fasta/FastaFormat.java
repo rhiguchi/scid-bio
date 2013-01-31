@@ -1,10 +1,12 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.fasta;
 
 import java.text.ParseException;
 import java.util.Iterator;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import jp.scid.bio.SequenceBioDataFormat;
 
 public class FastaFormat implements SequenceBioDataFormat<Fasta> {
     @SuppressWarnings("unused")

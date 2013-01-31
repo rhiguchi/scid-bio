@@ -1,9 +1,14 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence;
 
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.net.URL;
+
+import jp.scid.bio.SequenceBioDataReader;
+import jp.scid.bio.sequence.fasta.Fasta;
+import jp.scid.bio.sequence.fasta.FastaFormat;
+import jp.scid.bio.sequence.fasta.FastaFormatTest;
 
 import org.junit.Test;
 
@@ -11,7 +16,7 @@ public class SequenceBioDataReaderTest {
     
     @Test
     public void iteration() throws IOException {
-        URL fastaSource = getClass().getResource(FastaFormatTest.FASTA_EXAMPLE_2);
+        URL fastaSource = getClass().getResource("fasta/fasta_example_2.fasta");
         SequenceBioDataReader<Fasta> ite = SequenceBioDataReader.fromURL(fastaSource, new FastaFormat());
         
         assertTrue(ite.hasNext());
