@@ -17,6 +17,7 @@ import jp.scid.bio.GenBankAttribute;
 import jp.scid.bio.SequenceBioDataFormat;
 import jp.scid.bio.UnknownAttribute;
 
+@Deprecated
 public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
     private final static Logger logger = Logger.getLogger(GenBankFormat.class.getName());
 

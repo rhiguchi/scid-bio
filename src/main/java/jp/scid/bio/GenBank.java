@@ -95,6 +95,7 @@ public class GenBank implements SequenceBioData {
         protected Features features = null;
         protected Origin origin = null;
 
+        @Deprecated
         public Builder setAttribute(GenBankAttribute attribute) {
             if (attribute instanceof Locus) {
                 locus((Locus) attribute);
