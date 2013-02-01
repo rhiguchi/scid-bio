@@ -26,6 +26,10 @@ public class Definition extends AbstractGenBankAttribute {
         return value;
     }
     
+    public String value(String sepalator) {
+        return value.replaceAll("\n", sepalator);
+    }
+    
     @Override
     void setMeToBuilder(Builder builder) {
         builder.definition(this);

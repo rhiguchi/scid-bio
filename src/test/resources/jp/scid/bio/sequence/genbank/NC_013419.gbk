@@ -1,0 +1,181 @@
+LOCUS       NC_013419               3448 bp    DNA     circular BCT 04-NOV-2009
+DEFINITION  Blattabacterium sp. (Periplaneta americana) str. BPLAN plasmid
+            pBPLAN, complete sequence.
+ACCESSION   NC_013419
+VERSION     NC_013419.1  GI:261599111
+KEYWORDS    .
+SOURCE      Blattabacterium sp. (Periplaneta americana) str. BPLAN
+  ORGANISM  Blattabacterium sp. (Periplaneta americana) str. BPLAN
+            Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales;
+            Blattabacteriaceae; Blattabacterium.
+REFERENCE   1  (bases 1 to 3448)
+  AUTHORS   Sabree,Z.L., Kambhampati,S. and Moran,N.A.
+  TITLE     Nitrogen recycling and nutritional provisioning by Blattabacterium,
+            the cockroach endosymbiont
+  JOURNAL   Proc. Natl. Acad. Sci. U.S.A. (2009) In press
+   PUBMED   19880743
+  REMARK    Publication Status: Available-Online prior to print
+REFERENCE   2  (bases 1 to 3448)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (19-OCT-2009) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   3  (bases 1 to 3448)
+  AUTHORS   Sabree,Z.L., Kambhampati,S. and Moran,N.A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (09-FEB-2009) Ecology and Evolutionary Biology,
+            University of Arizona-Tucson, 1007 E. Lowell St, Tucson, AZ 85721,
+            USA
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review.
+            Source DNA and information regarding it can be obtained from Dr.
+            Nancy Moran (nmoran@email.arizona.edu) at 1007 E. Lowell St., Life
+            Sciences South Room 327, University of Arizona-Tucson, Tucson, AZ
+            85721.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..3448
+                     /organism="Blattabacterium sp. (Periplaneta americana)
+                     str. BPLAN"
+                     /mol_type="genomic DNA"
+                     /strain="BPLAN"
+                     /host="Periplaneta americana"
+                     /db_xref="taxon:600809"
+                     /plasmid="pBPLAN"
+     gene            511..903
+                     /gene="dut"
+                     /locus_tag="BPLAN_p001"
+                     /db_xref="GeneID:8527616"
+     CDS             511..903
+                     /gene="dut"
+                     /locus_tag="BPLAN_p001"
+                     /note="dUTPase; COG0756"
+                     /codon_start=1
+                     /inference="protein motif:PFAM:PF00692"
+                     /inference="similar to AA sequence:EcoGene:EG10251"
+                     /transl_table=11
+                     /product="deoxyuridine 5'-triphosphate
+                     nucleotidohydrolase"
+                     /protein_id="YP_003257361.1"
+                     /db_xref="GI:261599113"
+                     /db_xref="GeneID:8527616"
+                     /translation="MNTSVIIKIRNISGHPDPNYGTEGSAGMDLQAHLEKCEIILPMH
+                     RKTIKTGLFVEIPKGYEMQVRSRSGLALHHGITVLNDPGTIDSDYRGEIKILLINLSN
+                     IPFTIKNGDKIAQIIVQKHEKVEWNELQ"
+     gene            complement(895..1362)
+                     /locus_tag="BPLAN_p002"
+                     /db_xref="GeneID:8527613"
+     CDS             complement(895..1362)
+                     /locus_tag="BPLAN_p002"
+                     /codon_start=1
+                     /inference="protein motif:PFAM:PF07659"
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /protein_id="YP_003257362.1"
+                     /db_xref="GI:261599114"
+                     /db_xref="GeneID:8527613"
+                     /translation="MKWKDTSILYDVVFNKCKIFFVKNGYMNFNVDNNLLLVSVNQEN
+                     WISLVNYSVLSMVKMNRRKIRKEYVMYDYDKCMRVARIVMEKKNSDYKEAWKAMSFSS
+                     IKDIILQKIFRIQGIQRNECLIKKNQNKIKDNYIDILNYAIFILIRNDFSMLL"
+     gene            complement(1382..1816)
+                     /locus_tag="BPLAN_p003"
+                     /db_xref="GeneID:8527614"
+     CDS             complement(1382..1816)
+                     /locus_tag="BPLAN_p003"
+                     /note="VRR-NUC domain"
+                     /codon_start=1
+                     /inference="protein motif:PFAM:PF08774"
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /protein_id="YP_003257363.1"
+                     /db_xref="GI:261599115"
+                     /db_xref="GeneID:8527614"
+                     /translation="MIFIWRWRGKILKIFFVKKFRYSNVLGKEQILHSSVCDYLDYKY
+                     PNVFYFHPHNEAKRTPYERFLMKVMRLRPGVPDILVPFPQQGNTGMALEFKIKPNKLT
+                     ENQKNIISILNSYKWKVYVCYNFDQAKNNIDQYLKMIDNNKC"
+     gene            complement(1813..2886)
+                     /gene="nrdF"
+                     /locus_tag="BPLAN_p004"
+                     /db_xref="GeneID:8527615"
+     CDS             complement(1813..2886)
+                     /gene="nrdF"
+                     /locus_tag="BPLAN_p004"
+                     /note="Ribonucleotide Reductase, R2/beta subunit (RNRR2)
+                     is a member of a broad superfamily of ferritin-like
+                     diiron-carboxylate proteins; COG0208"
+                     /codon_start=1
+                     /inference="protein motif:PFAM:PF00268"
+                     /inference="similar to AA sequence:EcoGene:EG12381"
+                     /transl_table=11
+                     /product="ribonucleotide-diphosphate reductase beta
+                     subunit"
+                     /protein_id="YP_003257364.1"
+                     /db_xref="GI:261599112"
+                     /db_xref="GeneID:8527615"
+                     /translation="MSIMEDRLNFKPFEYQWAYEYWFKQQNAHWLHTEINMQSDIYDW
+                     NKNLTDQEKNVIGDILKGFAQTETEVGNYWSEMIPKWFPIPEIKMMGQAFGSFETIHA
+                     AAYSYLNDILGLDNFHAFLEDDVIMNKLKSLMDVRNSDHGKYNKEEIARSVALFSAAA
+                     EGVQLFSSFAVLLSFRKSNRLKGVGQQIIFSVRDESLHSEAGCKIFRTFCEENKGLKE
+                     IVERSVYHGVDLALKNEFVFIDKIFGGRDLCTIKREELKNFMKDRANMKLRELGFFDS
+                     YHVDRRMLDNMNWFYITISGEQQTDFFDNRETGYSKPNEDWNEDLFSSEGNVKSSEKK
+                     ILKILLKNKSNGLDSSGCDSCES"
+ORIGIN      
+        1 ataaaaagaa gaatagaaga aaaggtaaac gtccttacca tcatcaaatt cctaaaaaaa
+       61 gaaaaacatt cttcaaatta caaaaagaac aacaataacg aaatggaaaa aaaatatata
+      121 gatagtggag ccatacataa ataactaaac aaaaaatcca ctacctacaa aaaaactaaa
+      181 cgattatctc tctgtacttt ccaaaatttc aataatcctt ctcaacccag gatcttttcg
+      241 cattaaaccc tcaagttgtg aaccatacat acttactcga gtaataagag cagaatcatc
+      301 agaatcagaa gacttatcag aagttttttc ttctattttc tttgaagaaa gaacctcttc
+      361 aggttttttt tcactaacac gactagtcaa actatcatca tgacaggacg aaaaaaccat
+      421 caaaaataag atgaaaaaga acaatttttt catttcataa aatttttatt tttaaaaata
+      481 taagtttttt ttaaaaattc attaaaaatt atgaatacaa gtgtaattat aaaaatacgt
+      541 aacatatctg gacatccaga tccaaattat ggaacagaag gatcagcagg aatggattta
+      601 caagcgcatt tagaaaaatg cgaaataata ttaccgatgc atagaaaaac cataaaaacc
+      661 ggtttatttg tagaaatccc aaaaggatac gaaatgcaag tgagatccag aagcggatta
+      721 gctttacatc acggaataac agttttaaac gatccaggaa ctattgactc ggattataga
+      781 ggagaaataa aaattttact aattaatcta tcaaatattc catttaccat aaaaaacgga
+      841 gataaaatag cgcaaataat agttcaaaaa catgaaaaag tagaatggaa tgaattacaa
+      901 taacattgaa aaatcatttc taatcaaaat aaaaatagca taatttaata tatctatata
+      961 attatcttta attttatttt gattcttttt aattaaacat tcatttcttt gaatcccctg
+     1021 aatacgaaat attttttgca aaataatatc cttaatagaa ctaaaactca tcgctttcca
+     1081 cgcctcctta taatctgaat tttttttttc cataactatc cttgccactc tcatacactt
+     1141 atcataatca tacataacat actcctttct tatttttcgt ctattcattt ttaccataga
+     1201 taacacagaa taattaacta aactaatcca attttcttga ttaacactga ccaacaataa
+     1261 attgttatcc acgttaaaat tcatatatcc atttttcaca aaaaaaattt tgcatttatt
+     1321 aaaaacaaca tcatataata tggaagtatc tttccatttc atatccaaaa accccaaaaa
+     1381 actaacactt attattatct atcattttta aatactgatc tatattattt ttagcttgat
+     1441 caaaattata acaaacataa actttccatt tataagaatt taatatactt ataatatttt
+     1501 tctgattttc agttaattta ttaggcttaa ttttaaattc caaagccatt cctgtatttc
+     1561 cttgttgagg aaaaggaacc aatatatctg gaaccccagg cctcaatctc atcactttca
+     1621 taagaaatct ttcataagga gttctttttg cctcattatg aggatgaaaa taaaacacat
+     1681 ttggatactt ataatccaaa taatcacaca cagaactatg caaaatctgt tccttcccca
+     1741 aaacattact atacctaaac tttttcacaa aaaaaatttt taatatcttc cccctccatc
+     1801 tccatataaa aatcaagact cacaagaatc acatccagaa ctatctaaac cgttactctt
+     1861 attttttaaa agaattttta aaattttttt ttctgaagac ttcacatttc cttccgaaga
+     1921 aaacaaatct tcattccaat cttcattagg tttactatat ccagtttcac gattatcaaa
+     1981 aaaatctgtc tgttgctctc cagatattgt aatataaaac caattcatat tatctaacat
+     2041 tctcctatcc acatgataag aatcaaaaaa acccaattct cttaatttca tattagctct
+     2101 atctttcata aaatttttca attcctctct ctttatcgta cacaaatctc tacctccaaa
+     2161 aattttatct ataaaaacaa attcattttt taatgctaaa tctactccat gataaacaga
+     2221 tctttcaact atttctttca atcctttatt ctcctcacaa aaagtacgaa aaatcttaca
+     2281 acctgcttcc gaatgcaacg attcatctct aacagaaaaa ataatctgtt gaccaacccc
+     2341 tttcaaacga ttagattttc taaaagaaag caatactgca aaagaagaaa acaactgaac
+     2401 tccttccgct gctgctgaaa acaaagcaac acttcttgca atttcctctt tattatactt
+     2461 tccatgatca ctattcctaa catccatcaa agatttcaat ttattcatga tcacatcatc
+     2521 ttccaaaaaa gcatgaaaat tatccaatcc caaaatatca ttcaaataag aataagctgc
+     2581 tgcatgaata gtctcaaaag atccaaaagc ctgacccatc attttgattt ctggaatagg
+     2641 aaaccattta ggaatcattt cagaccaata atttcctact tctgtttctg tttgagcaaa
+     2701 accctttaat atatctccaa tcacattttt ctcctgatca gttaaatttt tattccaatc
+     2761 ataaatatct gattgcatat ttatttctgt atgaagccaa tgagcgtttt gttgcttaaa
+     2821 ccaatattca taagcccatt gatactcaaa aggtttaaaa tttaatcgat cttccattat
+     2881 gctcatctaa caaaaaatta tattgattta catttccaaa tgtaggaaaa atacaaaact
+     2941 aatcaaaaac agtaatcagt atacatacga tcgttctcgc acgcgcgcgc gggtgcatta
+     3001 caaaataacg ttatataatt acgtatatac acaaaatata atatatatta ttatatatgc
+     3061 cgaaatttta aaaaaaactc ggagaagtcg gaaaggggat ccgggggagg gggaagggaa
+     3121 gccctgaaag ccatggaaca tggctttttt tagattattt attatacctt tatacttttt
+     3181 actttgtatc ttaaaaacat cacaataaaa atacattaaa gaaaaaatca tgaagattcc
+     3241 agaggaaaaa aatttcataa aaatatctca ggattttttt gaaacccaag aatggaaaaa
+     3301 aagaagaatt tttagtgaaa tagaagctat tctttattta atactaaaaa aagaaataag
+     3361 aatttcagca agaagattag gattggtttt tggttggagc aaagcgaaag tagttatatt
+     3421 catccataag ctcatagcaa aaggatac
+//

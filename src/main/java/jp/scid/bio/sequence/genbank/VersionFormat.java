@@ -20,7 +20,7 @@ public class VersionFormat extends AbstractAttributeFormat {
         return DEFAULT_VERSION_FORMAT_PATTERN;
     }
 
-    public GenBankAttribute parse(String line) throws ParseException {
+    public Version parse(String line) throws ParseException {
         String pattern = getVersionFormatPattern();
         String versionData = line.substring(getIdentifierDigits());
 

@@ -17,7 +17,7 @@ public class AccessionFormat extends AbstractAttributeFormat {
         String[] values = valueString.split("\\s+");
 
         Builder builder = new Builder();
-        builder.addAll(values);
+        builder.append(values);
 
         Accession accesstion = builder.build();
         return accesstion;
