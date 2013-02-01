@@ -16,6 +16,8 @@ import org.junit.Test;
 public class GeneBankFileReaderTest {
     final static String GENBANK_FILE = "NC_001773.gbk";
     final static String GENBANK_FILE2 = "NC_013419.gbk";
+    final static String GENBANK_FILE3 = "NC_013131.gbk";
+    
     GeneBankFileReader reader;
     private BufferedReader source;
     
@@ -70,5 +72,21 @@ public class GeneBankFileReaderTest {
                 data.definition());
         assertEquals(Accession.newAccession("NC_013419"), data.accession());
         assertEquals(Version.newVersion("NC_013419", 1, "261599111"), data.version());
+    }
+    
+    @Test
+    public void parse_3() throws IOException {
+        source = openResource(GENBANK_FILE3);
+        List<GenBank> result = reader.readFromBufferedReader(source);
+        
+        assertEquals(1, result.size());
+        
+        GenBank data = result.get(0);
+        assertEquals(
+                new Origin.Builder()
+                        .append("tctgtctgaagtgcgccaacagggttctcgcgcacagacgcgcggcatcggcaatcgact")
+                        .append("cgacgggcgtgtcgtctggcacaccaccacgtcgttgtgggggcgcactataggcacttc")
+                        .append("cgccgaatccggtgtggactgcccgctgcgctttcccggtcaatatcacgacgacgaatc")
+                        .append("gg").build(), data.origin());
     }
 }

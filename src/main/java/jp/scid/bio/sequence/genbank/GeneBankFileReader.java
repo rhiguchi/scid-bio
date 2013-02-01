@@ -10,10 +10,12 @@ import java.util.List;
 import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 public class GeneBankFileReader {
     private final static Logger logger = Logger.getLogger(GeneBankFileReader.class.getName());
     private final static String ELEMENT_CONTINUANCE_PREFIX = "  ";
+    private final static Pattern LONG_ORIGIN_POSITION_PATTERN = Pattern.compile("^ \\d");
     
     private final LocusFormat locusFormat = new LocusFormat();
     private final DefinitionFormat definitionFormat = new DefinitionFormat();
@@ -124,7 +126,14 @@ public class GeneBankFileReader {
     }
 
     public boolean isAttributeStartLine(String line) {
-        return !line.startsWith(ELEMENT_CONTINUANCE_PREFIX);
+        if (line.startsWith(ELEMENT_CONTINUANCE_PREFIX)) {
+            return false;
+        }
+        else if (LONG_ORIGIN_POSITION_PATTERN.matcher(line).find()) {
+            return false;
+        }
+        
+        return true;
     }
 
     private static class AttributeBuilder {

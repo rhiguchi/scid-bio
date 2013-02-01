@@ -1,0 +1,67 @@
+LOCUS       NC_013131           10467782 bp    DNA     circular BCT 09-NOV-2009
+DEFINITION  Catenulispora acidiphila DSM 44928, complete genome.
+ACCESSION   NC_013131
+VERSION     NC_013131.1  GI:256389232
+KEYWORDS    .
+SOURCE      Catenulispora acidiphila DSM 44928
+  ORGANISM  Catenulispora acidiphila DSM 44928
+            Bacteria; Actinobacteria; Actinobacteridae; Actinomycetales;
+            Catenulisporineae; Catenulisporaceae; Catenulispora.
+REFERENCE   1  (bases 1 to 10467782)
+  AUTHORS   Lucas,S., Copeland,A., Lapidus,A., Glavina del Rio,T., Dalin,E.,
+            Tice,H., Bruce,D., Goodwin,L., Pitluck,S., Kyrpides,N.,
+            Mavromatis,K., Ivanova,N., Mikhailova,N., Chertkov,O., Brettin,T.,
+            Detter,J.C., Han,C., Larimer,F., Land,M., Hauser,L., Markowitz,V.,
+            Cheng,J.-F., Hugenholtz,P., Woyke,T., Wu,D., Klenk,H.-P. and
+            Eisen,J.A.
+  CONSRTM   US DOE Joint Genome Institute (JGI-PGF)
+  TITLE     The complete genome of Catenulispora acidiphila DSM 44928
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 10467782)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (21-AUG-2009) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   3  (bases 1 to 10467782)
+  AUTHORS   Lucas,S., Copeland,A., Lapidus,A., Glavina del Rio,T., Dalin,E.,
+            Tice,H., Bruce,D., Goodwin,L., Pitluck,S., Kyrpides,N.,
+            Mavromatis,K., Ivanova,N., Mikhailova,N., Chertkov,O., Brettin,T.,
+            Detter,J.C., Han,C., Larimer,F., Land,M., Hauser,L., Markowitz,V.,
+            Cheng,J.-F., Hugenholtz,P., Woyke,T., Wu,D., Klenk,H.-P. and
+            Eisen,J.A.
+  CONSRTM   US DOE Joint Genome Institute (JGI-PGF)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (12-AUG-2009) US DOE Joint Genome Institute, 2800
+            Mitchell Drive, Walnut Creek, CA 94598-1698, USA
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review.
+            URL -- http://www.jgi.doe.gov
+            JGI Project ID: 4082785
+            Source DNA and organism available from Hans-Peter Klenk at the
+            German Collection of Microorganisms and Cell Cultures (DSMZ)
+            (hans-peter.klenk@dsmz.de)
+            Contacts: Jonathan A. Eisen (jaeisen@ucdavis.edu)
+                      David Bruce (microbe@cuba.jgi-psf.org)
+            Whole genome sequencing and draft assembly at JGI-PGF
+            Finishing done by JGI-LANL
+            Annotation by JGI-ORNL and JGI-PGF
+            The JGI and collaborators endorse the principles for the
+            distribution and use of large scale sequencing data adopted by the
+            larger genome sequencing community and urge users of this data to
+            follow them. It is our intention to publish the work of this
+            project in a timely fashion and we welcome collaborative
+            interaction on the project and analysis.
+            (http://www.genome.gov/page.cfm?pageID=10506376).
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..10467782
+                     /organism="Catenulispora acidiphila DSM 44928"
+                     /mol_type="genomic DNA"
+                     /strain="DSM 44928"
+                     /db_xref="taxon:479433"
+ORIGIN      
+        1 tctgtctgaa gtgcgccaac agggttctcg cgcacagacg cgcggcatcg gcaatcgact
+  9999961 cgacgggcgt gtcgtctggc acaccaccac gtcgttgtgg gggcgcacta taggcacttc
+ 10000021 cgccgaatcc ggtgtggact gcccgctgcg ctttcccggt caatatcacg acgacgaatc
+ 10467781 gg
+//

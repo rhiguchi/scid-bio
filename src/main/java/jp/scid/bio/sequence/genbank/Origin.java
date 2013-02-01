@@ -39,6 +39,13 @@ public class Origin extends AbstractGenBankAttribute {
         else if (!sequence.equals(other.sequence)) return false;
         return true;
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder builder2 = new StringBuilder();
+        builder2.append(sequence);
+        return builder2.toString();
+    }
 
     public static class Builder {
         private final StringBuilder sequenceBuilder;
