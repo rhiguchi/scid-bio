@@ -9,16 +9,13 @@
      ====================================================================== -->
 <project name="scid-bio" default="compile" xmlns:ivy="antlib:org.apache.ivy.ant">
     <description>
-            SciendeDesign GUI library
+            SciendeDesign Bio library
     </description>
 
     <property file="project/build.properties"/>
+    <property file="project/build.default.properties"/>
 
     <!-- Classpath -->
-    <path id="run.main.classpath">
-        <pathelement location="${classes.main.dir}" />
-        <pathelement location="${src.main.resources.dir}" />
-    </path>
     <path id="run.test.classpath">
         <pathelement location="${classes.test.dir}" />
         <pathelement location="${src.test.resources.dir}" />
@@ -28,6 +25,7 @@
           target: init                      
          - - - - - - - - - - - - - - - - - -->
     <target name="init">
+        <mkdir dir="${src.main.resources.dir}"/>
     </target>
 
     <!-- ================================= 
@@ -54,7 +52,12 @@
     <target name="compile" depends="init, resolve" description="compile the project">
         <mkdir dir="${classes.main.dir}"/>
 
-        <javac destdir="${classes.main.dir}" source="${source}" target="${target}"
+        <copy todir="${classes.main.dir}">
+            <fileset dir="${src.main.java.dir}" excludes="**/*.java" />
+            <fileset dir="${src.main.resources.dir}"/>
+        </copy>
+        
+        <javac destdir="${classes.main.dir}" source="1.6" target="1.6"
                 encoding="UTF-8" debug="true" includeantruntime="false">
             <compilerarg value="-Xlint:unchecked"/>
             <src path="${src.main.java.dir}" />
@@ -68,7 +71,7 @@
     <target name="package" depends="version, compile" description="make a jar file for this project">
         <jar destfile="${package.file}">
             <fileset dir="${classes.main.dir}" />
-            <!-- <fileset dir="${src.main.resources.dir}" /> -->
+            <fileset dir="${src.main.resources.dir}" />
             <manifest>
                 <attribute name="Built-By" value="${user.name}" />
                 <attribute name="Build-Version" value="${version}" />
@@ -81,10 +84,16 @@
          ================================= -->
     <target name="test-compile" depends="compile" description="description">
         <mkdir dir="${classes.test.dir}"/>
-        <javac destdir="${classes.test.dir}" source="${source}" target="${target}"
+
+        <copy todir="${classes.test.dir}">
+            <fileset dir="${src.test.java.dir}" excludes="**/*.java" />
+            <fileset dir="${src.test.resources.dir}"/>
+        </copy>
+        
+        <javac destdir="${classes.test.dir}" source="1.6" target="1.6"
                 encoding="UTF-8" debug="true" includeantruntime="false">
             <src path="${src.test.java.dir}" />
-            <classpath refid="run.main.classpath" />
+            <classpath path="${classes.main.dir}" />
             <classpath refid="lib.test.classpath" />
         </javac>
     </target>
@@ -101,9 +110,7 @@
 
             <batchtest todir="${test.report.dir}">
                 <formatter type="xml" usefile="true"/>
-                <fileset dir="${classes.test.dir}">
-                    <include name="**/*Test*" />
-                </fileset>
+                <fileset dir="${classes.test.dir}" />
             </batchtest>
         </junit>
     </target>
