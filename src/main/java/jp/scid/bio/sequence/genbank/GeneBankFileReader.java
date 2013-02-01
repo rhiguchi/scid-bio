@@ -11,9 +11,6 @@ import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import jp.scid.bio.sequence.genbank.GenBankAttribute.Format;
-import jp.scid.bio.UnknownAttribute;
-
 public class GeneBankFileReader {
     private final static Logger logger = Logger.getLogger(GeneBankFileReader.class.getName());
     private final static String ELEMENT_CONTINUANCE_PREFIX = "  ";
@@ -30,11 +27,11 @@ public class GeneBankFileReader {
     private final OriginFormat originFormat = new OriginFormat();
     private final TerminateFormat terminateFormat = new TerminateFormat();
     
-    private final List<GenBankAttribute.Format> attributeFormats;
+    private final List<AbstractAttributeFormat> attributeFormats;
     
     public GeneBankFileReader() {
         attributeFormats =
-                Arrays.<GenBankAttribute.Format>asList(
+                Arrays.<AbstractAttributeFormat>asList(
                         locusFormat, definitionFormat, accessionFormat, versionFormat,
                         keywordsFormat, sourceFormat, referenceFormat, commentFormat,
                         featuresFormat, originFormat, terminateFormat);
@@ -69,7 +66,7 @@ public class GeneBankFileReader {
                 addAttributeTo(attributes, attrBuilder);
                 
                 // next attribute
-                GenBankAttribute.Format nextParser = findAttributeFormat(line);
+                AbstractAttributeFormat nextParser = findAttributeFormat(line);
 
                 if (nextParser == null) {
                     logger.log(Level.WARNING, "Unknown attribute: {0}", line);
@@ -107,8 +104,8 @@ public class GeneBankFileReader {
         }
     }
     
-    private Format findAttributeFormat(String line) {
-        for (GenBankAttribute.Format format: attributeFormats) {
+    private AbstractAttributeFormat findAttributeFormat(String line) {
+        for (AbstractAttributeFormat format: attributeFormats) {
             if (format.isHeadLine(line))
                 return format;
         }
@@ -131,10 +128,10 @@ public class GeneBankFileReader {
     }
 
     private static class AttributeBuilder {
-        private final GenBankAttribute.Format parser;
+        private final AbstractAttributeFormat parser;
         private final Queue<String> lines = new ArrayDeque<String>();
 
-        public AttributeBuilder(GenBankAttribute.Format parser) {
+        public AttributeBuilder(AbstractAttributeFormat parser) {
             this.parser = parser;
         }
 

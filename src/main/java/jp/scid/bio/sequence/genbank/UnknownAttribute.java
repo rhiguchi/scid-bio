@@ -1,13 +1,15 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence.genbank;
 
 import java.text.ParseException;
 
-import jp.scid.bio.sequence.genbank.GenBankAttribute;
 
 public class UnknownAttribute implements GenBankAttribute {
     public static UnknownAttribute INSTANCE = new UnknownAttribute();
     
-    public static class Format implements GenBankAttribute.Format {
+    public static class Format extends AbstractAttributeFormat {
+        public Format() {
+            super("?");
+        }
         
         /**
          * @return always {@code true}

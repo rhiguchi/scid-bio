@@ -5,9 +5,7 @@ import static java.lang.String.*;
 import java.text.ParseException;
 import java.util.Iterator;
 
-import jp.scid.bio.sequence.genbank.GenBankAttribute.Format;
-
-abstract class AbstractAttributeFormat implements GenBankAttribute.Format {
+abstract class AbstractAttributeFormat {
     int identifierDigits = 12;
     String identifier;
 
@@ -27,6 +25,8 @@ abstract class AbstractAttributeFormat implements GenBankAttribute.Format {
         return line.startsWith(getIdentifier())
             && line.substring(getIdentifier().length(), getIdentifierDigits()).trim().isEmpty();
     }
+    
+    public abstract GenBankAttribute parse(Iterable<String> lines) throws ParseException;
 
     String ensureHeadLineExistence(Iterator<String> linesIterator) throws ParseException {
         final String firstLine;

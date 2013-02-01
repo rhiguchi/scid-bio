@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 
 import jp.scid.bio.sequence.genbank.GenBank.Builder;
 import jp.scid.bio.SequenceBioDataFormat;
-import jp.scid.bio.UnknownAttribute;
 
 @Deprecated
 public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
@@ -23,23 +22,23 @@ public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
 
     private int attributeKeyDigits = 12;
 
-    private final Map<String, GenBankAttribute.Format> attributeFormatMap;
+    private final Map<String, AbstractAttributeFormat> attributeFormatMap;
     
-    private final List<GenBankAttribute.Format> attributeFormats;
+    private final List<AbstractAttributeFormat> attributeFormats;
 
     private TerminateFormat terminateFormat = new TerminateFormat();
     
-    protected GenBankAttribute.Format firstAttributeFormat;
+    protected AbstractAttributeFormat firstAttributeFormat;
     
-    public GenBankFormat(GenBankAttribute.Format firstAttributeFormat, AbstractAttributeFormat... formats) {
+    public GenBankFormat(AbstractAttributeFormat firstAttributeFormat, AbstractAttributeFormat... formats) {
         if (firstAttributeFormat == null)
             throw new IllegalArgumentException("firstAttributeFormat must not be null");
         
         this.firstAttributeFormat = firstAttributeFormat;
         
-        this.attributeFormats = Arrays.<GenBankAttribute.Format>asList(formats);
+        this.attributeFormats = Arrays.<AbstractAttributeFormat>asList(formats);
         
-        attributeFormatMap = new HashMap<String, GenBankAttribute.Format>();
+        attributeFormatMap = new HashMap<String, AbstractAttributeFormat>();
         
         for (AbstractAttributeFormat format: formats) {
             attributeFormatMap.put(format.getIdentifier(), format);
@@ -62,7 +61,7 @@ public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
         return terminateFormat.isTerminateLine(line);
     }
     
-    public GenBankAttribute.Format getFirstAttributeFormat() {
+    public AbstractAttributeFormat getFirstAttributeFormat() {
         return firstAttributeFormat;
     }
     
@@ -89,7 +88,7 @@ public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
             if (isAttributeHead(line)) {
                 appendAttribute(builder, attrBuilder);
 
-                GenBankAttribute.Format nextParser = findAttributeFormat(line);
+                AbstractAttributeFormat nextParser = findAttributeFormat(line);
 
                 if (nextParser == null) {
                     logger.log(Level.WARNING, "Unknown attribute: {0}", line);
@@ -125,11 +124,11 @@ public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
     }
 
     static class AttributeBuilder {
-        final GenBankAttribute.Format parser;
+        final AbstractAttributeFormat parser;
 
         final List<String> lines = new LinkedList<String>();
 
-        public AttributeBuilder(GenBankAttribute.Format parser) {
+        public AttributeBuilder(AbstractAttributeFormat parser) {
             this.parser = parser;
         }
 
@@ -178,8 +177,8 @@ public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
         return tKey;
     }
     
-    public GenBankAttribute.Format findAttributeFormat(String line) {
-        for (GenBankAttribute.Format format: attributeFormats) {
+    public AbstractAttributeFormat findAttributeFormat(String line) {
+        for (AbstractAttributeFormat format: attributeFormats) {
             if (format.isHeadLine(line))
                 return format;
         }
