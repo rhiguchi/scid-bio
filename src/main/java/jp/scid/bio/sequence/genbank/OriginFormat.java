@@ -13,6 +13,7 @@ public class OriginFormat extends AbstractAttributeFormat {
         super("ORIGIN");
     }
     
+    @Override
     public Origin parse(Iterable<String> source) throws ParseException {
         Iterator<String> sourceIte = source.iterator();
         ensureHeadLineExistence(sourceIte);
@@ -51,7 +52,7 @@ public class OriginFormat extends AbstractAttributeFormat {
         int lineLength = line.length();
         
         for (int start: GENBANK_INT_ARRAY) {
-            if (lineLength < start + 10) {
+            if (lineLength <= start + 10) {
                 accume.append(line.substring(start).trim());
                 break;
             }
