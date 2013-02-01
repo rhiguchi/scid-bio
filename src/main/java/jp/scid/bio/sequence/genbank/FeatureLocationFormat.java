@@ -4,11 +4,10 @@ import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jp.scid.bio.sequence.genbank.BoundedRangeLocation.Builder;
-
 public class FeatureLocationFormat {
     private static final String COMPLEMENT_VALUE_PREFIX = "complement(";
     private static final String JOIN_VALUE_PREFIX = "join(";
+    private static final String ORDER_VALUE_PREFIX = "order(";
     private static final String COMPOUND_VALUE_SUFFIX = ")";
     private final static String accessionPattern = "^\\w+(:?\\.\\d+)\\:";
     private final static Pattern numberMatchPattern = Pattern.compile("\\d+");
@@ -23,23 +22,33 @@ public class FeatureLocationFormat {
             complement = true;
         }
         
+        
         if ((value = getJoinValue(text)) != null) {
-            String[] ranges = split(value);
-            
             JoinedLocation.Builder builder = new JoinedLocation.Builder();
-            builder.setComplement(complement);
+            makeBuilder(builder, complement, value);
             
-            for (String rangeText: ranges) {
-                FeatureLocation location = parse(rangeText);
-                builder.add(location);
-            }
-            
+            return builder.build();
+        }
+        else if ((value = getOrderValue(text)) != null) {
+            OrderedLocation.Builder builder = new OrderedLocation.Builder();
+            makeBuilder(builder, complement, value);
             
             return builder.build();
         }
         else {
             FeatureLocation location = parseSpanLocation(text, complement);
             return location;
+        }
+    }
+
+    protected void makeBuilder(AbstractJoinedLocation.Builder builder, boolean complement, String value)
+            throws ParseException {
+        builder.setComplement(complement);
+        
+        String[] ranges = split(value);
+        for (String rangeText: ranges) {
+            FeatureLocation location = parse(rangeText);
+            builder.add(location);
         }
     }
     
@@ -55,6 +64,15 @@ public class FeatureLocationFormat {
     protected String getJoinValue(String text) {
         if (text.startsWith(JOIN_VALUE_PREFIX) && text.endsWith(COMPOUND_VALUE_SUFFIX)) {
             return text.substring(JOIN_VALUE_PREFIX.length(), text.length() - 1);
+        }
+        else {
+            return null;
+        }
+    }
+    
+    protected String getOrderValue(String text) {
+        if (text.startsWith(ORDER_VALUE_PREFIX) && text.endsWith(COMPOUND_VALUE_SUFFIX)) {
+            return text.substring(ORDER_VALUE_PREFIX.length(), text.length() - 1);
         }
         else {
             return null;

@@ -113,6 +113,20 @@ public class FeatureLocationFormatTest {
     }
     
     @Test
+    public void parseOrderLocation() throws ParseException {
+        String text = "order(12360..12428,12546..12614,12690..12758,12816..12884)";
+        
+        OrderedLocation location = (OrderedLocation) format.parse(text);
+        assertEquals("start", 12360, location.getStart());
+        assertEquals("end", 12884, location.getEnd());
+        assertFalse("not complement", location.isComplement());
+        assertEquals("two locations", 4, location.getLocations().size());
+        
+        assertEqualsStartEnd(12360, 12428, false, location.getLocations().get(0));
+        assertEqualsStartEnd(12816, 12884, false, location.getLocations().get(3));
+    }
+    
+    @Test
     public void parseJoinComplementLocation() throws ParseException {
         String text = "join(complement(4918..5163),complement(2691..4571))";
         
