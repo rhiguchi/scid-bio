@@ -13,6 +13,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import jp.scid.bio.sequence.SequenceBioData;
+
 public class SequenceBioDataReader<E extends SequenceBioData> implements Iterator<E>, Closeable {
     private final BufferedReader reader;
     private final SequenceBioDataFormat<E> format;

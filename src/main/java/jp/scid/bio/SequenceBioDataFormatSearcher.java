@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import jp.scid.bio.sequence.SequenceBioData;
 import jp.scid.bio.sequence.fasta.FastaFormat;
 import jp.scid.bio.sequence.genbank.GenBankFormat;
 

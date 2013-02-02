@@ -1,6 +1,6 @@
 package jp.scid.bio.sequence.genbank;
 
-import jp.scid.bio.SequenceBioData;
+import jp.scid.bio.sequence.SequenceBioData;
 
 public class GenBank implements SequenceBioData {
     public final static GenBank EMPTY = new GenBank(new Builder());

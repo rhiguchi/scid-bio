@@ -1,4 +1,4 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence;
 
 public interface SequenceBioData {
     public String getSequence();
