@@ -95,7 +95,7 @@ public class LocusFormat extends AbstractAttributeFormat {
     }
 
     @Override
-    public GenBankAttribute parse(Iterable<String> lines) throws ParseException {
+    public Locus parse(Iterable<String> lines) throws ParseException {
         String firstLine = ensureHeadLineExistence(lines.iterator());
         return parse(firstLine);
     }

@@ -6,7 +6,7 @@ import java.util.List;
 
 import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
-public class Source extends AbstractGenBankAttribute {
+public class Source extends GenBankAttribute {
     private final String value;
     private final String organism;
     private final List<String> taxonomy;

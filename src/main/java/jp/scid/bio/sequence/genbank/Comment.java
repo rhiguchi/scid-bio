@@ -3,7 +3,7 @@ package jp.scid.bio.sequence.genbank;
 
 import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
-public class Comment extends AbstractGenBankAttribute {
+public class Comment extends GenBankAttribute {
     private final String value;
 
     Comment(String value) {

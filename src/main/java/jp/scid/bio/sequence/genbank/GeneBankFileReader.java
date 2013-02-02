@@ -119,7 +119,7 @@ public class GeneBankFileReader {
         GenBank.Builder builder = new GenBank.Builder();
         
         for (GenBankAttribute attribute: attributes) {
-            ((AbstractGenBankAttribute) attribute).setMeToBuilder(builder);
+            attribute.setMeToBuilder(builder);
         }
         
         return builder.build();

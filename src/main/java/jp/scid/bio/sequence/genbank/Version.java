@@ -3,7 +3,7 @@ package jp.scid.bio.sequence.genbank;
 
 import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
-public class Version extends AbstractGenBankAttribute {
+public class Version extends GenBankAttribute {
     private final String accession;
     private final int number;
     private final String identifier;

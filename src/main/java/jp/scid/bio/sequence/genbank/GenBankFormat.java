@@ -111,7 +111,7 @@ public class GenBankFormat implements SequenceBioDataFormat<GenBank> {
     void appendAttribute(GenBank.Builder builder, AttributeBuilder attrBuilder) {
         try {
             GenBankAttribute attribute = attrBuilder.getAttribute();
-            builder.setAttribute(attribute);
+//            builder.setAttribute(attribute);
         }
         catch (ParseException e) {
             logger.log(Level.WARNING, "Cannot parse genbank attribute: " + e.getLocalizedMessage()

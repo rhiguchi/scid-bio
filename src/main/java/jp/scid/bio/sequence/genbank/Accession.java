@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Accession extends AbstractGenBankAttribute {
+public class Accession extends GenBankAttribute {
     public final static Accession EMPTY = new Accession("", Collections.<String>emptyList());
 
     private final String primary;

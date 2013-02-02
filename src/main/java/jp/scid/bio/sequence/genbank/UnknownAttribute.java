@@ -5,7 +5,7 @@ import java.text.ParseException;
 import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
 
-public class UnknownAttribute extends AbstractGenBankAttribute {
+public class UnknownAttribute extends GenBankAttribute {
     public static UnknownAttribute INSTANCE = new UnknownAttribute();
     
     public static class Format extends AbstractAttributeFormat {

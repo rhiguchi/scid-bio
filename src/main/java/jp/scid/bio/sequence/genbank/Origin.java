@@ -2,7 +2,7 @@ package jp.scid.bio.sequence.genbank;
 
 
 
-public class Origin extends AbstractGenBankAttribute {
+public class Origin extends GenBankAttribute {
     private final String sequence;
 
     Origin(String sequence) {

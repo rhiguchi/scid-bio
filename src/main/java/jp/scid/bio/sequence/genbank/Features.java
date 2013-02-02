@@ -10,7 +10,7 @@ import java.util.ListIterator;
 import java.util.RandomAccess;
 
 
-public class Features extends AbstractGenBankAttribute implements List<Feature>, RandomAccess {
+public class Features extends GenBankAttribute implements List<Feature>, RandomAccess {
     private final List<Feature> features;
 
     public Features(Builder builder) {

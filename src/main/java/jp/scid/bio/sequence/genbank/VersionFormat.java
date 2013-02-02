@@ -41,7 +41,7 @@ public class VersionFormat extends AbstractAttributeFormat {
     }
 
     @Override
-    public GenBankAttribute parse(Iterable<String> lines) throws ParseException {
+    public Version parse(Iterable<String> lines) throws ParseException {
         String firstLine = ensureHeadLineExistence(lines.iterator());
         return parse(firstLine);
     }

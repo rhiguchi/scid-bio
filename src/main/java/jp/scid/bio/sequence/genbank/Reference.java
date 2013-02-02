@@ -3,7 +3,7 @@ package jp.scid.bio.sequence.genbank;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Reference extends AbstractGenBankAttribute {
+public class Reference extends GenBankAttribute {
     private final int basesStart;
     private final int basesEnd;
     private final String authors;

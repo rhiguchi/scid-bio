@@ -86,42 +86,6 @@ public class GenBank implements SequenceBioData {
         protected Features features = null;
         protected Origin origin = null;
 
-        @Deprecated
-        public Builder setAttribute(GenBankAttribute attribute) {
-            if (attribute instanceof Locus) {
-                locus((Locus) attribute);
-            }
-            else if (attribute instanceof Definition) {
-                definition((Definition) attribute);
-            }
-            else if (attribute instanceof Accession) {
-                accession((Accession) attribute);
-            }
-            else if (attribute instanceof Version) {
-                version((Version) attribute);
-            }
-            else if (attribute instanceof Keywords) {
-                keywords((Keywords) attribute);
-            }
-            else if (attribute instanceof Source) {
-                source((Source) attribute);
-            }
-            else if (attribute instanceof Reference) {
-                reference((Reference) attribute);
-            }
-            else if (attribute instanceof Comment) {
-                comment((Comment) attribute);
-            }
-            else if (attribute instanceof Features) {
-                features((Features) attribute);
-            }
-            else if (attribute instanceof Origin) {
-                origin((Origin) attribute);
-            }
-            
-            return this;
-        }
-
         public GenBank build() {
             return new GenBank(this);
         }

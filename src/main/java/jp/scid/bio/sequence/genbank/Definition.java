@@ -3,7 +3,7 @@ package jp.scid.bio.sequence.genbank;
 
 import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
-public class Definition extends AbstractGenBankAttribute {
+public class Definition extends GenBankAttribute {
     public final static Definition EMPTY = new Definition();
 
     private final String value;

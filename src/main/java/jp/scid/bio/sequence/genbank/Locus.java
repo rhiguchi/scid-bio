@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 
-public class Locus extends AbstractGenBankAttribute {
+public class Locus extends GenBankAttribute {
     public final static Locus EMPTY = new Locus();
 
     private final String name;
