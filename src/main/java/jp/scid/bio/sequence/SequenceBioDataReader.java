@@ -1,4 +1,4 @@
-package jp.scid.bio;
+package jp.scid.bio.sequence;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import jp.scid.bio.sequence.SequenceBioData;
+import jp.scid.bio.SequenceBioDataFormat;
 
 public class SequenceBioDataReader<E extends SequenceBioData> implements Iterator<E>, Closeable {
     private final BufferedReader reader;

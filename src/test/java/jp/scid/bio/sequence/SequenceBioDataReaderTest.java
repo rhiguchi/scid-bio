@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.net.URL;
 
-import jp.scid.bio.SequenceBioDataReader;
 import jp.scid.bio.sequence.fasta.Fasta;
 import jp.scid.bio.sequence.fasta.FastaFormat;
 import jp.scid.bio.sequence.fasta.FastaFormatTest;
