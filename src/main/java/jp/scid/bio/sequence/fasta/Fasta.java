@@ -54,14 +54,14 @@ public class Fasta implements SequenceBioData {
     }
     
     public static class Builder {
-        protected String identifier;
-        protected String namespace;
-        protected String accession;
-        protected int version;
-        protected String name;
-        protected String description;
-        protected String sequence;
-        
+        String identifier = "";
+        String namespace = "";
+        String accession = "";
+        int version = 0;
+        String name = "";
+        String description = "";
+        String sequence = "";
+
         public Fasta build() {
             return new Fasta(this);
         }
