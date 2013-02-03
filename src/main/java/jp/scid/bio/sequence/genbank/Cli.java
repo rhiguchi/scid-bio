@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import jp.scid.bio.sequence.SequenceBioDataReader;
+
 
 public class Cli {
 
@@ -12,7 +14,7 @@ public class Cli {
      */
     public static void main(String[] args) {
         System.out.println(Cli.class.getName());
-        GeneBankFileReader reader = new GeneBankFileReader();
+        GenBankFormat format = new GenBankFormat();
         
         for (String path: args) {
             System.out.println("Reading: " + path);
@@ -20,7 +22,9 @@ public class Cli {
             
             try {
                 source = new BufferedReader(new FileReader(path));
-                reader.readFromBufferedReader(source);
+                SequenceBioDataReader<GenBank> reader = format.createDataReader(source);
+                
+                while (reader.readNext() != null);
             }
             catch (Exception e) {
                 e.printStackTrace();
