@@ -1,0 +1,47 @@
+LOCUS       NC_013131           10467782 bp    DNA     circular BCT 09-NOV-2009
+DEFINITION  Catenulispora acidiphila DSM 44928, complete genome.
+ACCESSION   NC_013131
+VERSION     NC_013131.1  GI:256389232
+KEYWORDS    .
+SOURCE      Catenulispora acidiphila DSM 44928
+  ORGANISM  Catenulispora acidiphila DSM 44928
+            Bacteria; Actinobacteria; Actinobacteridae; Actinomycetales;
+            Catenulisporineae; Catenulisporaceae; Catenulispora.
+REFERENCE   1  (bases 1 to 10467782)
+  AUTHORS   Lucas,S., Copeland,A., Lapidus,A., Glavina del Rio,T., Dalin,E.,
+            Tice,H., Bruce,D., Goodwin,L., Pitluck,S., Kyrpides,N.,
+            Mavromatis,K., Ivanova,N., Mikhailova,N., Chertkov,O., Brettin,T.,
+            Detter,J.C., Han,C., Larimer,F., Land,M., Hauser,L., Markowitz,V.,
+            Cheng,J.-F., Hugenholtz,P., Woyke,T., Wu,D., Klenk,H.-P. and
+            Eisen,J.A.
+  CONSRTM   US DOE Joint Genome Institute (JGI-PGF)
+  TITLE     The complete genome of Catenulispora acidiphila DSM 44928
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 10467782)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (21-AUG-2009) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+FEATURES             Location/Qualifiers
+     source          1..10467782
+                     /organism="Catenulispora acidiphila DSM 44928"
+                     /mol_type="genomic DNA"
+                     /strain="DSM 44928"
+                     /db_xref="taxon:479433"
+//
+LOCUS       NC_013419               3448 bp    DNA     circular BCT 04-NOV-2009
+DEFINITION  Blattabacterium sp. (Periplaneta americana) str. BPLAN plasmid
+            pBPLAN, complete sequence.
+ACCESSION   NC_013419
+VERSION     NC_013419.1  GI:261599111
+KEYWORDS    .
+SOURCE      Blattabacterium sp. (Periplaneta americana) str. BPLAN
+  ORGANISM  Blattabacterium sp. (Periplaneta americana) str. BPLAN
+            Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales;
+            Blattabacteriaceae; Blattabacterium.
+ORIGIN      
+        1 tctgtctgaa gtgcgccaac agggttctcg cgcacagacg cgcggcatcg gcaatcgact
+  9999961 cgacgggcgt gtcgtctggc acaccaccac gtcgttgtgg gggcgcacta taggcacttc
+ 10000021 cgccgaatcc ggtgtggact gcccgctgcg ctttcccggt caatatcacg acgacgaatc
+ 10467781 gg
+//

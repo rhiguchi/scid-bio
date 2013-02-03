@@ -3,137 +3,71 @@ package jp.scid.bio.sequence;
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URL;
 import java.text.ParseException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
 
-import jp.scid.bio.SequenceBioDataFormat;
+import jp.scid.bio.sequence.SequenceBioDataFormat.LineParser;
 
-public class SequenceBioDataReader<E extends SequenceBioData> implements Iterator<E>, Closeable {
-    private final BufferedReader reader;
+public class SequenceBioDataReader<E extends SequenceBioData> implements Closeable {
+    private final BufferedReader source;
     private final SequenceBioDataFormat<E> format;
+    private String lastReadLine = null;
     
-    private String nextFirstLine = null;
-    private IOException lastException = null;
-    
-    public SequenceBioDataReader(Reader reader, SequenceBioDataFormat<E> format) {
-        if (reader == null) throw new IllegalArgumentException("reader must not be null");
+    public SequenceBioDataReader(BufferedReader source, SequenceBioDataFormat<E> format) {
+        if (source == null) throw new IllegalArgumentException("source must not be null");
         if (format == null) throw new IllegalArgumentException("format must not be null");
         
-        this.reader = new BufferedReader(reader);
+        this.source = source;
         this.format = format;
     }
     
     public static <E extends SequenceBioData> SequenceBioDataReader<E> fromFile(
             File file, SequenceBioDataFormat<E> format) throws IOException {
-        return fromURL(file.toURI().toURL(), format);
+        FileReader fileReader = new FileReader(file);
+        return new SequenceBioDataReader<E>(new BufferedReader(fileReader), format);
     }
     
-    public static <E extends SequenceBioData> SequenceBioDataReader<E> fromURL(
+    public static <E extends SequenceBioData> SequenceBioDataReader<E> fromUrl(
             URL url, SequenceBioDataFormat<E> format) throws IOException {
         InputStreamReader reader = new InputStreamReader(url.openStream());
-        return new SequenceBioDataReader<E>(reader, format);
+        return new SequenceBioDataReader<E>(new BufferedReader(reader), format);
     }
 
-    @Override
-    public boolean hasNext() {
-        ensureExistsNextLine();
-        
-        return nextFirstLine != null;
-    }
-
-    @Override
-    public E next() {
-        ensureExistsNextLine();
-        
-        if (nextFirstLine == null)
-            throw new NoSuchElementException();
-        
-        E nextValue = readNext();
-        return nextValue;
-    }
-
-    public IOException getLastException() {
-        return lastException;
-    }
-    
-    void ensureExistsNextLine() {
-        if (nextFirstLine != null)
-            return;
-        
-        try {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (format.isStartOfData(line)) {
-                    nextFirstLine = line;
-                    break;
-                }
-            }
-        }
-        catch (IOException e) {
-            lastException = e;
-        }
-    }
-    
-    E readNext() {
-        if (nextFirstLine == null)
-            throw new IllegalStateException("check first line before call readNext()");
-        
-        List<String> lines = new LinkedList<String>();
-        lines.add(nextFirstLine);
-        
-        nextFirstLine = null;
-        
-        try {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (format.isStartOfData(line)) {
-                    nextFirstLine = line;
-                    break;
-                }
-
-                lines.add(line);
-            }
-        }
-        catch (IOException e) {
-            lastException = e;
-        }
-        
-        try {
-            return format.parse(lines);
-        }
-        catch (ParseException e) {
-            throw new IllegalStateException("cannot parse data from: " + lines.get(0), e);
-        }
-    }
-    
-    List<String> readUntilStart() throws IOException {
-        List<String> lines = new LinkedList<String>();
+    public E readNext() throws IOException, ParseException {
         String line;
         
-        while ((line = reader.readLine()) != null) {
-            if (format.isStartOfData(line))
-                break;
-            
-            lines.add(line);
+        // read first line
+        if (lastReadLine != null) {
+            line = lastReadLine;
+            lastReadLine = null;
+        }
+        else {
+            line = source.readLine();
+            if (line == null) {
+                return null;
+            }
         }
         
-        return lines;
+        LineParser<E> parser = format.createLineBuilder();
+        parser.appendLine(line);
+        
+        while ((line = source.readLine()) != null) {
+            if (format.isDataStartLine(line)) {
+                lastReadLine = line;
+                break;
+            }
+            
+            parser.appendLine(line);
+        }
+        
+        return parser.build();
     }
     
     @Override
     public void close() throws IOException {
-        reader.close();
-    }
-    
-    @Override
-    public void remove() {
-        throw new UnsupportedOperationException();
+        source.close();
     }
 }

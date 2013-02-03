@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
+@Deprecated
 public class GeneBankFileReader {
     private final static Logger logger = Logger.getLogger(GeneBankFileReader.class.getName());
     private final static String ELEMENT_CONTINUANCE_PREFIX = "  ";

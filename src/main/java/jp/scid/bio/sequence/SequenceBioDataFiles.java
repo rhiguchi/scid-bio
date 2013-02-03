@@ -10,7 +10,6 @@ import java.nio.CharBuffer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import jp.scid.bio.SequenceBioDataFormat;
 import jp.scid.bio.sequence.fasta.FastaFormat;
 import jp.scid.bio.sequence.genbank.GenBankFormat;
 import jp.scid.bio.sequence.genbank.LocusFormat;

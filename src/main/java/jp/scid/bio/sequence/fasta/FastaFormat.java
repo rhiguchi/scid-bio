@@ -6,9 +6,10 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jp.scid.bio.SequenceBioDataFormat;
+import jp.scid.bio.sequence.SequenceBioDataFormat;
+import jp.scid.bio.sequence.fasta.Fasta.Builder;
 
-public class FastaFormat implements SequenceBioDataFormat<Fasta> {
+public class FastaFormat extends SequenceBioDataFormat<Fasta> {
     @SuppressWarnings("unused")
     private final static Logger logger = Logger.getLogger(FastaFormat.class.getName());
 
@@ -21,7 +22,8 @@ public class FastaFormat implements SequenceBioDataFormat<Fasta> {
     public FastaFormat() {
     }
 
-    public boolean isStartOfData(String line) {
+    @Override
+    public boolean isDataStartLine(String line) {
         return line.startsWith(">");
     }
     
@@ -37,7 +39,7 @@ public class FastaFormat implements SequenceBioDataFormat<Fasta> {
         Iterator<String> source = sourceLines.iterator();
         final String first;
         
-        if (!source.hasNext() || !isStartOfData(first = source.next())) {
+        if (!source.hasNext() || !isDataStartLine(first = source.next())) {
             throw new ParseException("need header line starts with '>' at first of source lines", 0);
         }
         
@@ -59,9 +61,12 @@ public class FastaFormat implements SequenceBioDataFormat<Fasta> {
         return builder.build();
     }
 
-    void makeHeaderValues(String first, Fasta.Builder builder) {
+    void makeHeaderValues(String first, Fasta.Builder builder) throws ParseException {
         Matcher headerMatcher = Pattern.compile(getHeaderPattern()).matcher(first);
-        headerMatcher.find();
+        if (!headerMatcher.find()) {
+            throw new ParseException("invalid fasta header: " + first, 0);
+        }
+        
         String name = headerMatcher.group(1);
         String description = headerMatcher.group(2);
         
@@ -86,5 +91,41 @@ public class FastaFormat implements SequenceBioDataFormat<Fasta> {
     
     static String nonNull(String text) {
         return text == null ? "" : text;
+    }
+    
+    @Override
+    public LineParser createLineBuilder() {
+        Fasta.Builder builder = new Fasta.Builder();
+        return new LineParser(builder);
+    }
+    
+    class LineParser extends SequenceBioDataFormat.LineParser<Fasta> {
+        private boolean headerRead = false;
+        private final Fasta.Builder builder;
+        
+        LineParser(Builder builder) {
+            if (builder == null) throw new IllegalArgumentException("builder must not be null");
+            this.builder = builder;
+        }
+
+        @Override
+        public void appendLine(String line) throws ParseException {
+            if (headerRead) {
+                builder.appendSequence(line);
+            }
+            else {
+                appendHeaderLine(line);
+            }
+        }
+        
+        @Override
+        public Fasta build() {
+            return builder.build();
+        }
+
+        private void appendHeaderLine(String line) throws ParseException {
+            makeHeaderValues(line, builder);
+            headerRead = true;
+        }
     }
 }

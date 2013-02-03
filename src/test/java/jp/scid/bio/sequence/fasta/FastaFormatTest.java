@@ -22,7 +22,7 @@ public class FastaFormatTest {
     }
     
     @Test
-    public void makeHeaderValues_1() {
+    public void makeHeaderValues_1() throws ParseException {
         String line = ">gi|532319|pir|TVFV2E|TVFV2E envelope protein";
         Fasta.Builder builder = new Fasta.Builder();
         
