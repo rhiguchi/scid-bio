@@ -2,10 +2,8 @@ package jp.scid.bio.sequence.genbank;
 
 import java.text.ParseException;
 import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.regex.Pattern;

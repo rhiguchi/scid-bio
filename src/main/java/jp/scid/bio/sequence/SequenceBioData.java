@@ -1,5 +1,9 @@
 package jp.scid.bio.sequence;
 
 public interface SequenceBioData {
-    public String getSequence();
+    String name();
+    
+    String sequence();
+    
+    int sequenceLength();
 }

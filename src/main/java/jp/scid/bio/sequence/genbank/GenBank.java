@@ -70,8 +70,18 @@ public class GenBank implements SequenceBioData {
     }
 
     @Override
-    public String getSequence() {
+    public String name() {
+        return locus.name();
+    }
+    
+    @Override
+    public String sequence() {
         return origin.sequence();
+    }
+    
+    @Override
+    public int sequenceLength() {
+        return locus.sequenceLength();
     }
 
     public static class Builder {

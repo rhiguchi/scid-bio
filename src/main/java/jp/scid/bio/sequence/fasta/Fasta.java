@@ -37,6 +37,7 @@ public class Fasta implements SequenceBioData {
         return version;
     }
     
+    @Override
     public String name() {
         return name;
     }
@@ -45,12 +46,14 @@ public class Fasta implements SequenceBioData {
         return description;
     }
     
+    @Override
     public String sequence() {
         return sequence;
     }
     
-    public String getSequence() {
-        return sequence;
+    @Override
+    public int sequenceLength() {
+        return sequence.length();
     }
     
     public static class Builder {
