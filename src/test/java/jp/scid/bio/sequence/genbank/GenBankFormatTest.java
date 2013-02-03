@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 
 import jp.scid.bio.sequence.SequenceBioDataReader;
+import jp.scid.bio.sequence.genbank.GenBankFormat.AttibuteKey;
 import jp.scid.bio.sequence.genbank.GenBankFormat.LineParser;
 
 import org.junit.After;
@@ -47,6 +48,22 @@ public class GenBankFormatTest {
         assertFalse(format.isDataStartLine("DEFINITION  Blattabacterium sp. (Periplaneta americana) str. BPLAN plasmid"));
         assertFalse(format.isDataStartLine("//"));
         assertTrue(format.isDataStartLine("LOCUS       NC_013419               3448 bp    DNA     circular BCT 04-NOV-2009"));
+    }
+    
+    @Test
+    public void testAttibuteKey_getFormat() {
+        assertTrue("LocusFormat", AttibuteKey.LOCUS.getFormat(format) instanceof LocusFormat);
+        assertTrue("DefinitionFormat", AttibuteKey.DEFINITION.getFormat(format) instanceof DefinitionFormat);
+        assertTrue("AccessionFormat", AttibuteKey.ACCESSION.getFormat(format) instanceof AccessionFormat);
+        assertTrue("VersionFormat", AttibuteKey.VERSION.getFormat(format) instanceof VersionFormat);
+        assertTrue("KeywordsFormat", AttibuteKey.KEYWORDS.getFormat(format) instanceof KeywordsFormat);
+        assertTrue("SourceFormat", AttibuteKey.SOURCE.getFormat(format) instanceof SourceFormat);
+        assertTrue("ReferenceFormat", AttibuteKey.REFERENCE.getFormat(format) instanceof ReferenceFormat);
+        assertTrue("CommentFormat", AttibuteKey.COMMENT.getFormat(format) instanceof CommentFormat);
+        assertTrue("FeaturesFormat", AttibuteKey.FEATURES.getFormat(format) instanceof FeaturesFormat);
+        assertTrue("OriginFormat", AttibuteKey.ORIGIN.getFormat(format) instanceof OriginFormat);
+        assertNull("BaseCountFormat", AttibuteKey.BASE_COUNT.getFormat(format));
+        assertTrue("TerminateFormat", AttibuteKey.TERMINATE.getFormat(format) instanceof TerminateFormat);
     }
 
     @Test

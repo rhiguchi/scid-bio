@@ -3,8 +3,10 @@ package jp.scid.bio.sequence.genbank;
 import java.text.ParseException;
 import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.regex.Pattern;
 
@@ -12,8 +14,114 @@ import jp.scid.bio.sequence.SequenceBioDataFormat;
 import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
 public class GenBankFormat extends SequenceBioDataFormat<GenBank> {
-//    private final static Logger logger = Logger.getLogger(GenBankFormat.class.getName());
+//  private final static Logger logger = Logger.getLogger(GenBankFormat.class.getName());
 
+    static enum AttibuteKey {
+        LOCUS() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.locusFormat;
+            }
+        },
+        DEFINITION() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.definitionFormat;
+            }
+        },
+        ACCESSION() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.accessionFormat;
+            }
+        },
+        VERSION() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.versionFormat;
+            }
+        },
+        KEYWORDS() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.keywordsFormat;
+            }
+        },
+        SOURCE() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.sourceFormat;
+            }
+        },
+        REFERENCE() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.referenceFormat;
+            }
+        },
+        COMMENT() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.commentFormat;
+            }
+        },
+        FEATURES() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.featuresFormat;
+            }
+        },
+        ORIGIN() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.originFormat;
+            }
+        },
+        BASE_COUNT() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.baseCountFormat;
+            }
+            
+            @Override
+            String key() {
+                return "BASE COUNT";
+            }
+        },
+        TERMINATE() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return owner.terminateFormat;
+            }
+            
+            @Override
+            String key() {
+                return "//";
+            }
+        },
+        ;
+        
+        private final static Map<String, AttibuteKey> keyMap;
+        static {
+            keyMap = new HashMap<String, AttibuteKey>();
+            for (AttibuteKey key: AttibuteKey.values()) {
+                keyMap.put(key.key(), key);
+            }
+        }
+        
+        private AttibuteKey() {
+        }
+        
+        String key() {
+            return name();
+        }
+
+        public static AttibuteKey findByKey(String keyString) {
+            return keyMap.get(keyString);
+        }
+        
+        abstract AbstractAttributeFormat getFormat(GenBankFormat owner);
+    }
     private final static String ELEMENT_CONTINUANCE_PREFIX = "  ";
     private final static Pattern LONG_ORIGIN_POSITION_PATTERN = Pattern.compile("^ \\d");
 
@@ -27,9 +135,10 @@ public class GenBankFormat extends SequenceBioDataFormat<GenBank> {
     private CommentFormat commentFormat = new CommentFormat();
     private FeaturesFormat featuresFormat = new FeaturesFormat();
     private OriginFormat originFormat = new OriginFormat();
+    private AbstractAttributeFormat baseCountFormat = null;
     private TerminateFormat terminateFormat = new TerminateFormat();
     
-    protected AbstractAttributeFormat firstAttributeFormat;
+    private int attributeKeyDigits = 12;
     
     public GenBankFormat() {
     }
@@ -71,15 +180,6 @@ public class GenBankFormat extends SequenceBioDataFormat<GenBank> {
         return new GenBank.Builder();
     }
 
-    AbstractAttributeFormat findAttributeFormat(String line) {
-        for (AbstractAttributeFormat format: attributeFormats()) {
-            if (format.isHeadLine(line))
-                return format;
-        }
-        
-        return null;
-    }
-
     boolean isAttributeStartLine(String line) {
         if (line.startsWith(ELEMENT_CONTINUANCE_PREFIX)) {
             return false;
@@ -90,14 +190,22 @@ public class GenBankFormat extends SequenceBioDataFormat<GenBank> {
         
         return true;
     }
-
-    private Iterable<AbstractAttributeFormat> attributeFormats() {
-        List<AbstractAttributeFormat> attributeFormats =
-                Arrays.<AbstractAttributeFormat>asList(
-                        locusFormat, definitionFormat, accessionFormat, versionFormat,
-                        keywordsFormat, sourceFormat, referenceFormat, commentFormat,
-                        featuresFormat, originFormat, terminateFormat);
-        return attributeFormats;
+    
+    private AttibuteKey parseAttributeKey(String line) throws ParseException {
+        final String keyString;
+        if (line.length() < attributeKeyDigits) {
+            keyString = line.trim();
+        }
+        else {
+            keyString = line.substring(0, attributeKeyDigits).trim();
+        }
+        
+        AttibuteKey key = AttibuteKey.findByKey(keyString);
+        if (key == null) {
+            throw new ParseException("invalid attribute key line: " + line, 0);
+        }
+        
+        return key;
     }
     
     class LineParser extends SequenceBioDataFormat.LineParser<GenBank> {
@@ -129,7 +237,8 @@ public class GenBankFormat extends SequenceBioDataFormat<GenBank> {
                 return;
             }
             
-            AbstractAttributeFormat attrFormat = findAttributeFormat(attributeLines.element());
+            AttibuteKey attributeKey = parseAttributeKey(attributeLines.element());
+            AbstractAttributeFormat attrFormat = attributeKey.getFormat(GenBankFormat.this);
             if (attrFormat != null) {
                 GenBankAttribute attribute = attrFormat.parse(attributeLines);
                 attribute.setMeToBuilder(builder);
