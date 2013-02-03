@@ -18,7 +18,7 @@ public class Fasta implements SequenceBioData {
         this.version = builder.version;
         this.name = builder.name;
         this.description = builder.description;
-        this.sequence = builder.sequence;
+        this.sequence = builder.sequence();
     }
     
     public String identifier() {
@@ -60,7 +60,7 @@ public class Fasta implements SequenceBioData {
         int version = 0;
         String name = "";
         String description = "";
-        String sequence = "";
+        StringBuilder sequence = new StringBuilder();
 
         public Fasta build() {
             return new Fasta(this);
@@ -91,7 +91,15 @@ public class Fasta implements SequenceBioData {
         }
         
         public void sequence(String sequence) {
-            this.sequence = sequence;
+            this.sequence = new StringBuilder(sequence);
+        }
+
+        public void appendSequence(String line) {
+            sequence.append(line);
+        }
+        
+        String sequence() {
+            return this.sequence.toString();
         }
     }
 }
