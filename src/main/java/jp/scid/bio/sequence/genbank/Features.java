@@ -77,10 +77,12 @@ public class Features extends GenBankAttribute implements List<Feature>, RandomA
         throw new UnsupportedOperationException("clear");
     }
 
+    @Override
     public boolean equals(Object o) {
         return features.equals(o);
     }
 
+    @Override
     public int hashCode() {
         return features.hashCode();
     }

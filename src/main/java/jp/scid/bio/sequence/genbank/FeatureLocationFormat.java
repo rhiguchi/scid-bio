@@ -12,7 +12,8 @@ public class FeatureLocationFormat {
     private final static String accessionPattern = "^\\w+(:?\\.\\d+)\\:";
     private final static Pattern numberMatchPattern = Pattern.compile("\\d+");
     
-    public FeatureLocation parse(String text) throws ParseException {
+    public FeatureLocation parse(String baseText) throws ParseException {
+        String text = baseText;
         boolean complement = false;
         
         String value = null;
@@ -56,27 +57,21 @@ public class FeatureLocationFormat {
         if (text.startsWith(COMPLEMENT_VALUE_PREFIX) && text.endsWith(COMPOUND_VALUE_SUFFIX)) {
             return text.substring(COMPLEMENT_VALUE_PREFIX.length(), text.length() - 1);
         }
-        else {
-            return null;
-        }
+        return null;
     }
     
     protected String getJoinValue(String text) {
         if (text.startsWith(JOIN_VALUE_PREFIX) && text.endsWith(COMPOUND_VALUE_SUFFIX)) {
             return text.substring(JOIN_VALUE_PREFIX.length(), text.length() - 1);
         }
-        else {
-            return null;
-        }
+        return null;
     }
     
     protected String getOrderValue(String text) {
         if (text.startsWith(ORDER_VALUE_PREFIX) && text.endsWith(COMPOUND_VALUE_SUFFIX)) {
             return text.substring(ORDER_VALUE_PREFIX.length(), text.length() - 1);
         }
-        else {
-            return null;
-        }
+        return null;
     }
     
     private int parseInt(String text) throws ParseException {
@@ -88,7 +83,8 @@ public class FeatureLocationFormat {
         }
     }
     
-    protected RangeLocation parseSpanLocation(String text, boolean complement) throws ParseException {
+    protected RangeLocation parseSpanLocation(String baseText, boolean complement) throws ParseException {
+        String text = baseText;
         BoundedRangeLocation.Builder builder = new BoundedRangeLocation.Builder();
         builder.setComplement(complement);
         

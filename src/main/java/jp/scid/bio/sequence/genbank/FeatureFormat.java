@@ -7,9 +7,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import jp.scid.bio.sequence.genbank.FeatureQualifier.Format;
-
-
 public class FeatureFormat {
     private int keyDigits = 21;
     private int keyIndent = 5;

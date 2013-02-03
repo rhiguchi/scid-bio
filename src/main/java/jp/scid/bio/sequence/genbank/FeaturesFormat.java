@@ -26,6 +26,7 @@ public class FeaturesFormat extends AbstractAttributeFormat {
         return featureFormat.getKeyDigits();
     }
     
+    @Override
     public Features parse(Iterable<String> source) throws ParseException {
         Iterator<String> sourceIte = source.iterator();
         ensureHeadLineExistence(sourceIte);

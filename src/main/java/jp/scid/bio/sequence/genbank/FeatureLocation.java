@@ -13,17 +13,14 @@ public abstract class FeatureLocation implements Comparable<FeatureLocation> {
                     if (o1.complement == o2.complement) {
                         return 0;
                     }
-                    else {
-                        return o1.complement ? -1 : 1;
-                    }
+                    
+                    return o1.complement ? -1 : 1;
                 }
-                else {
-                    return o1.end < o2.end ? -1 : 1;
-                }
+                
+                return o1.end < o2.end ? -1 : 1;
             }
-            else {
-                return o1.start < o2.start ? -1 : 1;
-            }
+            
+            return o1.start < o2.start ? -1 : 1;
         }
     };
     
@@ -35,17 +32,14 @@ public abstract class FeatureLocation implements Comparable<FeatureLocation> {
                     if (o1.complement == o2.complement) {
                         return 0;
                     }
-                    else {
-                        return o1.complement ? -1 : 1;
-                    }
+                    
+                    return o1.complement ? -1 : 1;
                 }
-                else {
-                    return o1.start < o2.start ? -1 : 1;
-                }
+                
+                return o1.start < o2.start ? -1 : 1;
             }
-            else {
-                return o1.end < o2.end ? -1 : 1;
-            }
+            
+            return o1.end < o2.end ? -1 : 1;
         }
     };
     
@@ -82,16 +76,13 @@ public abstract class FeatureLocation implements Comparable<FeatureLocation> {
                 if (this.complement == o.complement) {
                     return 0;
                 }
-                else {
-                    return this.complement ? -1 : 1;
-                }
+                
+                return this.complement ? -1 : 1;
             }
-            else {
-                return this.end < o.end ? -1 : 1;
-            }
+            
+            return this.end < o.end ? -1 : 1;
         }
-        else {
-            return this.start < o.start ? -1 : 1;
-        }
+        
+        return this.start < o.start ? -1 : 1;
     }
 }

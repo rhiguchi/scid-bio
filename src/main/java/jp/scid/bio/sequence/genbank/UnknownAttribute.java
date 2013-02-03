@@ -42,5 +42,6 @@ public class UnknownAttribute extends GenBankAttribute {
      */
     @Override
     void setMeToBuilder(Builder builder) {
+        // do nothing
     }
 }

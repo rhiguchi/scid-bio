@@ -24,7 +24,7 @@ public class Cli {
                 source = new BufferedReader(new FileReader(path));
                 SequenceBioDataReader<GenBank> reader = format.createDataReader(source);
                 
-                while (reader.readNext() != null);
+                while (reader.readNext() != null) { /* do nothing */ }
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -35,6 +35,7 @@ public class Cli {
                         source.close();
                 }
                 catch (IOException e) {
+                    // donothing
                 }
             }
         }
