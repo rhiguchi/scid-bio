@@ -59,7 +59,7 @@
         
         <javac destdir="${classes.main.dir}" source="1.6" target="1.6"
                 encoding="UTF-8" debug="true" includeantruntime="false">
-            <compilerarg value="-Xlint:unchecked"/>
+            <compilerarg value="-Xlint:all"/>
             <src path="${src.main.java.dir}" />
             <classpath refid="lib.compile.classpath" />
         </javac>
