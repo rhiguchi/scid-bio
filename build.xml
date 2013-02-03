@@ -12,6 +12,8 @@
             SciendeDesign Bio library
     </description>
 
+    <property name="module.version.target" value="0.2" />
+    
     <property file="project/build.properties"/>
     <property file="project/build.default.properties"/>
 
