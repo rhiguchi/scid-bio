@@ -25,15 +25,18 @@ public class Fasta implements SequenceBioData {
         return identifier;
     }
     
+    @Override
     public String namespace() {
         return namespace;
     }
     
-    public String accession() {
+    @Override
+    public String accessionNumber() {
         return accession;
     }
     
-    public int version() {
+    @Override
+    public int accessionVersion() {
         return version;
     }
     

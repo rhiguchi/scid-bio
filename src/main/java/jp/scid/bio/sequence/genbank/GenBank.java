@@ -33,17 +33,50 @@ public class GenBank implements SequenceBioData {
         return locus;
     }
     
+    /**
+     * @see Locus#topology()
+     */
+    @Override
+    public String namespace() {
+        return locus.topology();
+    }
+    
     public Definition definition() {
         return definition;
     }
 
+    /**
+     * @see Definition#value(String)
+     */
+    @Override
+    public String description() {
+        return definition.value(" ");
+    }
+    
     public Accession accession() {
         return accession;
+    }
+    
+    /**
+     * @see Accession#primary()
+     */
+    @Override
+    public String accessionNumber() {
+        return accession.primary();
     }
 
     public Version version() {
         return version;
     }
+    
+    /**
+     * @see Version#number()
+     */
+    @Override
+    public int accessionVersion() {
+        return version.number();
+    }
+    
 
     public Keywords keywords() {
         return keywords;

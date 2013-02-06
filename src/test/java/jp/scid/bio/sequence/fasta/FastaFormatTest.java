@@ -32,8 +32,8 @@ public class FastaFormatTest {
         assertEquals("TVFV2E", fasta.name());
         assertEquals("532319", fasta.identifier());
         assertEquals("pir", fasta.namespace());
-        assertEquals("TVFV2E", fasta.accession());
-        assertEquals(0, fasta.version());
+        assertEquals("TVFV2E", fasta.accessionNumber());
+        assertEquals(0, fasta.accessionVersion());
         assertEquals("envelope protein", fasta.description());
     }
     
@@ -46,8 +46,8 @@ public class FastaFormatTest {
         assertEquals("OVAX_CHICK", fasta.name());
         assertEquals("129295", fasta.identifier());
         assertEquals("sp", fasta.namespace());
-        assertEquals("P01013", fasta.accession());
-        assertEquals(0, fasta.version());
+        assertEquals("P01013", fasta.accessionNumber());
+        assertEquals(0, fasta.accessionVersion());
         assertEquals("GENE X PROTEIN (OVALBUMIN-RELATED)", fasta.description());
         assertEquals("QIKDLLVSSSTDLDTTLVLVNAIYFKGMWKTAFNAEDTREMPFHVTKQESKPVQMMCMNNSFNVATLPAE"
                 + "FLFLIKHNPTNTIVYFGRYWSP", fasta.sequence());

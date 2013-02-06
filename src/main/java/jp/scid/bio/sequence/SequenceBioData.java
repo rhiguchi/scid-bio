@@ -6,4 +6,12 @@ public interface SequenceBioData {
     String sequence();
     
     int sequenceLength();
+    
+    String accessionNumber();
+    
+    int accessionVersion();
+    
+    String namespace();
+    
+    String description();
 }
