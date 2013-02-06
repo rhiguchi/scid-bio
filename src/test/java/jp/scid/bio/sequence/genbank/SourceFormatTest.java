@@ -35,10 +35,10 @@ public class SourceFormatTest {
         Source source = format.parse(sourceLines1);
         
         assertNotNull(source);
-        assertEquals("value", "Pyrococcus abyssi GE5", source.getValue());
-        assertEquals("organism", "Pyrococcus abyssi GE5", source.getOrganism());
+        assertEquals("value", "Pyrococcus abyssi GE5", source.value());
+        assertEquals("organism", "Pyrococcus abyssi GE5", source.organism());
         assertEquals("taxonomy", Arrays.asList("Archaea", "Euryarchaeota", "Thermococci",
-                "Thermococcales", "Thermococcaceae", "Pyrococcus"), source.getTaxonomy());
+                "Thermococcales", "Thermococcaceae", "Pyrococcus"), source.taxonomy());
     }
     
     @Test
@@ -46,9 +46,9 @@ public class SourceFormatTest {
         Source source = format.parse(sourceLines2);
         
         assertNotNull(source);
-        assertEquals("value", "Listeria ivanovii", source.getValue());
-        assertEquals("organism", "Listeria ivanovii", source.getOrganism());
+        assertEquals("value", "Listeria ivanovii", source.value());
+        assertEquals("organism", "Listeria ivanovii", source.organism());
         assertEquals("taxonomy", Arrays.asList("Bacteria", "Firmicutes", "Bacillales",
-                "Listeriaceae", "Listeria"), source.getTaxonomy());
+                "Listeriaceae", "Listeria"), source.taxonomy());
     }
 }

@@ -24,15 +24,15 @@ public class Source extends GenBankAttribute {
         }
     }
     
-    public String getValue() {
+    public String value() {
         return value;
     }
     
-    public String getOrganism() {
+    public String organism() {
         return organism;
     }
     
-    public List<String> getTaxonomy() {
+    public List<String> taxonomy() {
         return taxonomy;
     }
     
