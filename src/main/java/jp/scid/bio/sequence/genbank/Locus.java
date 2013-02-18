@@ -45,10 +45,18 @@ public class Locus extends GenBankAttribute {
         return molculeType;
     }
 
+    /**
+     * ex. liner or circular
+     * @return topology
+     */
     public String topology() {
         return topology;
     }
 
+    /**
+     * ex. BCT or PRI
+     * @return division
+     */
     public String division() {
         return division;
     }
