@@ -38,7 +38,7 @@ public class GenBank implements SequenceBioData {
      */
     @Override
     public String namespace() {
-        return locus.topology();
+        return locus.division();
     }
     
     public Definition definition() {
