@@ -41,7 +41,7 @@
          ================================= -->
     <target name="retrieve" description="retrieve dependencies with ivy">
         <ivy:retrieve symlink="true" />
-        <echoproperties prefix="ivy"></echoproperties>
+        
         <!-- Class Paths -->
         <ivy:cachepath pathid="lib.compile.classpath" conf="compile" />
         <ivy:cachepath pathid="lib.test.classpath" conf="test" />
@@ -166,10 +166,11 @@
     <!-- ================================= 
            target: publish-local
           ================================= -->
-    <target name="publish-local" depends="retrieve, local-version"
+    <target name="publish-local" depends="local-version"
             description="publish this project in the local ivy repository">
+        <ivy:info/>
         <ivy:publish artifactspattern="${artifacts.dir}/[artifact].[ext]" 
-            resolver="local"
+            resolver="local" 
             pubrevision="${version}"
             pubdate="${now}"
             status="integration"
@@ -189,13 +190,15 @@
     <!-- ================================= 
           target: publish              
          ================================= -->
-    <target name="publish" depends="clean, jar, test" description="publish this project in the ivy repository">
+    <target name="publish" depends="clean, build" description="publish this project in the ivy repository">
+        <ivy:info/>
         <ivy:publish
-            artifactspattern="${build.dir}/[artifact].[ext]"
+            artifactspattern="${artifacts.dir}/[artifact].[ext]"
             resolver="shared"
-            pubrevision="${version}"
+            overwrite="true"
+            pubrevision="${module.version.target}"
             status="release" />
-        <echo message="project ${ant.project.name} released with version ${version}" />
+        <echo message="project ${ant.project.name} released with version ${module.version.target}" />
     </target>
 
     <target name="local-version">

@@ -31,6 +31,12 @@
 		<conf name="test" extends="default" visibility="private"/>
 	</configurations>
 	
+	<publications>
+	    <artifact name="${ant.project.name}"/>
+	    <artifact name="${ant.project.name}-sources" type="source" ext="jar" />
+	    <artifact name="${ant.project.name}-javadocs" type="javadoc" ext="jar" />
+	</publications>
+	
 	<dependencies>
 		<dependency org="commons-io" name="commons-io" rev="2.3" conf="test->default"/>
 		<dependency org="junit" name="junit" rev="4.10" conf="test->default"/>
