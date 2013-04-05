@@ -196,7 +196,7 @@
     <!-- ================================= 
           target: publish              
          ================================= -->
-    <target name="publish" depends="dist" description="publish this project in the ivy repository">
+    <target name="publish" depends="clean-lib, clean, build, dist" description="publish this project in the ivy repository">
         <ivy:info/>
         <ivy:publish resolver="shared" overwrite="true" />
         <echo message="project ${ant.project.name} released with version ${version}" />
