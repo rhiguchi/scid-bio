@@ -22,6 +22,7 @@
     <info
         organisation="jp.scid"
         module="scid-bio"
+        revision="0.2.1"
         status="integration">
 	</info>
 	
@@ -32,9 +33,9 @@
 	</configurations>
 	
 	<publications>
-	    <artifact name="${ant.project.name}"/>
-	    <artifact name="${ant.project.name}-sources" type="source" ext="jar" />
-	    <artifact name="${ant.project.name}-javadocs" type="javadoc" ext="jar" />
+	    <artifact />
+	    <artifact type="source" ext="jar" />
+	    <artifact type="javadoc" ext="jar" />
 	</publications>
 	
 	<dependencies>

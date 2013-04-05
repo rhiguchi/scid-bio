@@ -30,6 +30,7 @@
          ================================= -->
     <target name="clean" description="clean the project">
         <delete includeemptydirs="true" dir="${build.dir}"/>
+        <delete includeemptydirs="true" dir="${dist.dir}"/>
     </target>
     
     <target name="clean-lib" description="clean lib dir">
@@ -114,7 +115,14 @@
 
     <target name="build" depends="retrieve, jar, test, jar-javadoc, jar-sources"
             description="make a jar file for this project">
+    </target>
+
+    <target name="dist" depends="">
+        <property name="version" value="${module.version.target}" />
         
+        <copy file="${package.file}" tofile="${dist.dir}/jars/${ant.project.name}-${version}.jar" />
+        <copy file="${javadoc.file}" tofile="${dist.dir}/javadocs/${ant.project.name}-${version}.jar" />
+        <copy file="${source.file}" tofile="${dist.dir}/sources/${ant.project.name}-${version}.jar" />
     </target>
     
     <!-- ================================= 
@@ -166,13 +174,11 @@
     <!-- ================================= 
            target: publish-local
           ================================= -->
-    <target name="publish-local" depends="local-version"
+    <target name="publish-local" depends="local-version, dist"
             description="publish this project in the local ivy repository">
         <ivy:info/>
-        <ivy:publish artifactspattern="${artifacts.dir}/[artifact].[ext]" 
-            resolver="local" 
+        <ivy:publish resolver="local" 
             pubrevision="${version}"
-            pubdate="${now}"
             status="integration"
             forcedeliver="true">
         </ivy:publish>
@@ -190,15 +196,10 @@
     <!-- ================================= 
           target: publish              
          ================================= -->
-    <target name="publish" depends="clean, build" description="publish this project in the ivy repository">
+    <target name="publish" depends="dist" description="publish this project in the ivy repository">
         <ivy:info/>
-        <ivy:publish
-            artifactspattern="${artifacts.dir}/[artifact].[ext]"
-            resolver="shared"
-            overwrite="true"
-            pubrevision="${module.version.target}"
-            status="release" />
-        <echo message="project ${ant.project.name} released with version ${module.version.target}" />
+        <ivy:publish resolver="shared" overwrite="true" />
+        <echo message="project ${ant.project.name} released with version ${version}" />
     </target>
 
     <target name="local-version">
