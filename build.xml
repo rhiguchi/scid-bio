@@ -100,6 +100,7 @@
     <target name="javadoc" depends="compile" description="Create Javadoc">
         <javadoc destdir="${javadoc.dir}" encoding="UTF-8" source="1.6" author="true" version="true"
                 access="${javadoc.access}" docencoding="UTF-8" charset="UTF-8" doctitle="${javadoc.title}">
+            <arg value="-J-Dfile.encoding=UTF-8"/>
             <classpath refid="lib.compile.path" />
             <sourcepath path="${src.main.java.dir}"/>
             <link href="${javadoc.api-ref.javase}"/>
