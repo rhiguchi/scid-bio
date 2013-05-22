@@ -26,16 +26,18 @@
         status="integration">
 	</info>
 	
-	<configurations defaultconf="default">
+	<configurations defaultconf="compile">
 		<conf name="default"/>
+		<conf name="source" extends="default"/>
+		<conf name="javadoc" extends="default"/>
 		<conf name="compile" extends="default"/>
 		<conf name="test" extends="default" visibility="private"/>
 	</configurations>
 	
 	<publications>
 	    <artifact />
-	    <artifact type="source" ext="jar" />
-	    <artifact type="javadoc" ext="jar" />
+	    <artifact name="scid-bio-sources" type="source" ext="jar" conf="source" />
+	    <artifact name="scid-bio-javadocs" type="javadoc" ext="jar" conf="javadoc" />
 	</publications>
 	
 	<dependencies>

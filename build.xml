@@ -122,8 +122,8 @@
         <property name="version" value="${module.version.target}" />
         
         <copy file="${package.file}" tofile="${dist.dir}/jars/${ant.project.name}-${version}.jar" />
-        <copy file="${javadoc.file}" tofile="${dist.dir}/javadocs/${ant.project.name}-${version}.jar" />
-        <copy file="${source.file}" tofile="${dist.dir}/sources/${ant.project.name}-${version}.jar" />
+        <copy file="${javadoc.file}" tofile="${dist.dir}/javadocs/${ant.project.name}-javadocs-${version}.jar" />
+        <copy file="${source.file}" tofile="${dist.dir}/sources/${ant.project.name}-sources-${version}.jar" />
     </target>
     
     <!-- ================================= 
