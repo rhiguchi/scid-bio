@@ -1,18 +1,21 @@
 package jp.scid.bio.sequence.genbank;
 
+import static java.lang.String.*;
+
 import java.text.ParseException;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Queue;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import jp.scid.bio.sequence.SequenceBioDataFormat;
 import jp.scid.bio.sequence.genbank.GenBank.Builder;
 
 public class GenBankFormat extends SequenceBioDataFormat<GenBank> {
-//  private final static Logger logger = Logger.getLogger(GenBankFormat.class.getName());
+  private final static Logger logger = Logger.getLogger(GenBankFormat.class.getName());
 
     static enum AttibuteKey {
         LOCUS() {
@@ -97,6 +100,12 @@ public class GenBankFormat extends SequenceBioDataFormat<GenBank> {
                 return "//";
             }
         },
+        UNKNOWN() {
+            @Override
+            AbstractAttributeFormat getFormat(GenBankFormat owner) {
+                return null;
+            }
+        }
         ;
         
         private final static Map<String, AttibuteKey> keyMap;
@@ -189,7 +198,7 @@ public class GenBankFormat extends SequenceBioDataFormat<GenBank> {
         return true;
     }
     
-    private AttibuteKey parseAttributeKey(String line) throws ParseException {
+    private AttibuteKey parseAttributeKey(String line) {
         final String keyString;
         if (line.length() < attributeKeyDigits) {
             keyString = line.trim();
@@ -200,7 +209,8 @@ public class GenBankFormat extends SequenceBioDataFormat<GenBank> {
         
         AttibuteKey key = AttibuteKey.findByKey(keyString);
         if (key == null) {
-            throw new ParseException("invalid attribute key line: " + line, 0);
+            logger.warning(format("cannot parse attribute %s", key));
+            key = AttibuteKey.UNKNOWN;
         }
         
         return key;
