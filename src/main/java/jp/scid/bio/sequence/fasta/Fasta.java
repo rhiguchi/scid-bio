@@ -2,6 +2,11 @@ package jp.scid.bio.sequence.fasta;
 
 import jp.scid.bio.sequence.SequenceBioData;
 
+/**
+ * FASTA 形式ファイルに含まれている情報です
+ * 
+ * @author HIGUCHI Ryusuke
+ */
 public class Fasta implements SequenceBioData {
     private final String identifier;
     private final String namespace;
@@ -11,7 +16,7 @@ public class Fasta implements SequenceBioData {
     private final String description;
     private final String sequence;
     
-    public Fasta(Builder builder) {
+    Fasta(Builder builder) {
         this.identifier = builder.identifier;
         this.namespace = builder.namespace;
         this.accession = builder.accession;
@@ -59,6 +64,11 @@ public class Fasta implements SequenceBioData {
         return sequence.length();
     }
     
+    /**
+     * Fasta オブジェクトの作成用クラスです。
+     * 
+     * @author HIGUCHI Ryusuke
+     */
     public static class Builder {
         String identifier = "";
         String namespace = "";
